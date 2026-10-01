@@ -1,0 +1,6 @@
+// Cloudflare Workers static assets: serves dist/ (built by `npm run build`). Deploy with `npx wrangler deploy`.
+{
+  "name": "deskmind-site",
+  "compatibility_date": "2026-10-01",
+  "assets": { "directory": "./dist", "not_found_handling": "404-page", "html_handling": "auto-trailing-slash" }
+}

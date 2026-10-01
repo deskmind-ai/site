@@ -33,17 +33,17 @@ In mainland China, add `--registry=https://registry.npmmirror.com` to `npm insta
   order.
 - **Demo video:** `public/video/demo-{en,zh}.mp4` (1280 px, H.264, faststart), loaded only when the visitor presses play.
 
-## Deploy (launch day)
+## Deploy
 
-Cloudflare Pages, since the deskmind.dev DNS is already on Cloudflare:
+Cloudflare Workers with static assets (`wrangler.jsonc`), since the deskmind.dev DNS is on Cloudflare:
 
-1. Pages → Create → connect this repo. Framework preset: Astro. Build command `npm run build`, output directory `dist`.
-2. Check the `*.pages.dev` preview.
-3. Custom domains → add `deskmind.dev` (and `www.deskmind.dev`, redirected to the apex). Remove the current redirect
-   rule for the apex first.
+```bash
+npm run build
+npx wrangler deploy        # first time: npx wrangler login
+```
 
-Binding the domain makes the site public. Do it on launch day, together with the repositories going public, so that
-the GitHub, Hugging Face and ModelScope links resolve.
+The custom domain `deskmind.dev` is attached to the `deskmind-site` Worker (Workers → deskmind-site → Domains), with
+`www.deskmind.dev` redirected to the apex. Unknown paths are served `public/404.html`.
 
 ## Before launch
 
