@@ -1,33 +1,54 @@
 # deskmind.dev
 
-The DeskMind 得心 website: one static page (`index.html`), no build step. English and 简体中文 ship in the same page;
-the toggle and the browser language pick one. Brand assets in `assets/` are copied from
-[deskmind-ai/deskmind](https://github.com/deskmind-ai/deskmind/tree/main/brand) and follow its BRAND.md.
+The DeskMind 得心 website and docs, built with [Astro](https://astro.build) and
+[Starlight](https://starlight.astro.build).
 
-## Preview locally
+| Path | What | Source |
+|---|---|---|
+| `/`, `/zh/` | Homepage, English and 简体中文 | `src/components/Home.astro`, copy in `src/i18n/home.ts` |
+| `/docs/`, `/zh/docs/` | Docs, organised as start / how-to / reference / explanation / project | `src/content/docs/` |
+| any unknown path | 404 with Xiaofang | `public/404.html` |
+
+Brand assets in `public/assets/` are copied from
+[deskmind-ai/deskmind](https://github.com/deskmind-ai/deskmind/tree/main/brand) and follow its BRAND.md. Fonts are
+self-hosted (Manrope, JetBrains Mono); Chinese text uses the system font, so the site loads without Google Fonts.
+
+## Develop
 
 ```bash
-python3 -m http.server 8080   # then open http://127.0.0.1:8080
+npm install
+npm run dev       # http://localhost:4321
+npm run build     # static site in dist/
+npm run preview
 ```
+
+In mainland China, add `--registry=https://registry.npmmirror.com` to `npm install` if the default registry is slow.
+
+## Editing
+
+- **Homepage copy:** edit both languages in `src/i18n/home.ts`. The numbers come from
+  [brain/docs/results.md](https://github.com/deskmind-ai/brain/blob/main/docs/results.md); update them together.
+- **Docs:** each English page under `src/content/docs/docs/` has a Chinese twin at the same path under
+  `src/content/docs/zh/docs/`. The sidebar is generated from the folders; `sidebar.order` in the frontmatter sets the
+  order.
+- **Demo video:** `public/video/demo-{en,zh}.mp4` (1280 px, H.264, faststart), loaded only when the visitor presses play.
 
 ## Deploy (launch day)
 
-Cloudflare Pages is the simplest fit, since the deskmind.dev DNS is already on Cloudflare:
+Cloudflare Pages, since the deskmind.dev DNS is already on Cloudflare:
 
-1. Pages → Create → Direct upload (or connect this repo once it is on GitHub). Build command: none. Output directory: `/`.
+1. Pages → Create → connect this repo. Framework preset: Astro. Build command `npm run build`, output directory `dist`.
 2. Check the `*.pages.dev` preview.
 3. Custom domains → add `deskmind.dev` (and `www.deskmind.dev`, redirected to the apex). Remove the current redirect
    rule for the apex first.
 
 Binding the domain makes the site public. Do it on launch day, together with the repositories going public, so that
-the GitHub and Hugging Face links on the page resolve.
-
-GitHub Pages also works (`404.html` is picked up automatically); add a `CNAME` file containing `deskmind.dev`.
+the GitHub, Hugging Face and ModelScope links resolve.
 
 ## Before launch
 
-- Replace the demo slot (`#demo-slot`) with the launch video or GIF.
-- Check that the numbers still match `brain/docs/results.md`.
+- Check the numbers against `brain/docs/results.md`.
+- Point the download buttons at the published App release (`APP_DOWNLOAD` in `src/i18n/home.ts`).
 - Make sure `security@deskmind.dev` forwards to a monitored inbox.
 
 ## Licence

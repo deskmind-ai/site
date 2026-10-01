@@ -1,0 +1,38 @@
+/* Starlight theme in the DeskMind palette: paper, ink and one orange. Fonts are self-hosted (no Google Fonts, which
+   is slow or blocked in mainland China); Chinese falls back to the system's PingFang / YaHei. */
+@import '@fontsource/manrope/400.css';
+@import '@fontsource/manrope/500.css';
+@import '@fontsource/jetbrains-mono/400.css';
+
+:root {
+  --sl-font: Manrope, 'PingFang SC', 'Hiragino Sans GB', 'Noto Sans SC', 'Microsoft YaHei', system-ui, sans-serif;
+  --sl-font-mono: 'JetBrains Mono', ui-monospace, Menlo, monospace;
+  /* dark */
+  --sl-color-accent-low: #3a231c;
+  --sl-color-accent: #D9714F;
+  --sl-color-accent-high: #F2C8B8;
+  --sl-color-white: #F4F1EA;
+  --sl-color-gray-1: #E6E2D8;
+  --sl-color-gray-2: #C9C6BE;
+  --sl-color-gray-3: #A7AAA3;
+  --sl-color-gray-4: #6F746F;
+  --sl-color-gray-5: #3F4541;
+  --sl-color-gray-6: #2C312E;
+  --sl-color-black: #1D2220;
+}
+:root[data-theme='light'] {
+  --sl-color-accent-low: #F3DDD4;
+  --sl-color-accent: #C95536;
+  --sl-color-accent-high: #7A2E1A;
+  --sl-color-white: #262B28;
+  --sl-color-gray-1: #2F3531;
+  --sl-color-gray-2: #4A504C;
+  --sl-color-gray-3: #5C625E;
+  --sl-color-gray-4: #8A8E87;
+  --sl-color-gray-5: #C9C6BE;
+  --sl-color-gray-6: #ECE8DF;
+  --sl-color-gray-7: #F4F1EA;
+  --sl-color-black: #FBFAF6;
+}
+.site-title img { height: 28px; width: auto; }
+.sl-markdown-content h1, .sl-markdown-content h2, .sl-markdown-content h3, h1#_top { font-weight: 500; }
