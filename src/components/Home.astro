@@ -20,6 +20,10 @@ const ld = [
     image: 'https://deskmind.dev/assets/og-1280x640.png', inLanguage: t.lang,
   },
   {
+    '@context': 'https://schema.org', '@type': 'FAQPage', inLanguage: t.lang,
+    mainEntity: t.faq.items.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })),
+  },
+  {
     '@context': 'https://schema.org', '@type': 'Organization', name: 'DeskMind', url: 'https://deskmind.dev/',
     logo: 'https://deskmind.dev/assets/avatar-1000.png',
     sameAs: ['https://github.com/deskmind-ai', 'https://huggingface.co/deskmind', 'https://modelscope.cn/models/gxcsoccer/brain-4b'],
@@ -193,14 +197,19 @@ const ld = [
   </div>
 </section>
 
-<section class="wrap section privacy">
+<section id="faq" class="wrap section faqsec">
   <div class="intro">
-    <h2>{t.privacy.title}</h2>
-    <p class="sub">{t.privacy.lead}</p>
+    <h2>{t.faq.title}</h2>
   </div>
-  <ul class="plist">
-    {t.privacy.items.map(([h, d]) => <li><span class="strong">{h}</span><span class="muted">{d}</span></li>)}
-  </ul>
+  <div class="faqlist">
+    {t.faq.items.map(([q, a], i) => (
+      <details open={i === 0}>
+        <summary>{q}</summary>
+        <p>{a}</p>
+      </details>
+    ))}
+  </div>
+  <a href={t.faq.href} class="more">{t.faq.more}</a>
 </section>
 
 <section id="download" class="band soft">
@@ -224,6 +233,7 @@ const ld = [
   </div>
   <nav aria-label={t.footerLabel} class="fnav">
     <a href={t.docs}>{t.footer.docs}</a>
+    <a href={t.faq.href}>{t.footer.faq}</a>
     <a href={GH}>GitHub</a>
     <a href="https://huggingface.co/deskmind">Hugging Face</a>
     <a href={`${GH}/deskmind/discussions`}>{t.footer.discussions}</a>
@@ -346,10 +356,17 @@ const ld = [
   .notes ul { margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 6px; }
   .under { border-bottom: 1px solid rgba(244,241,234,0.5); }
 
-  .privacy { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 56px; }
-  .plist { margin: 0; padding: 0; list-style: none; }
-  .plist li { padding: 18px 0; border-top: 1px solid var(--line); display: flex; flex-direction: column; gap: 4px; }
-  .plist li:last-child { border-bottom: 1px solid var(--line); }
+
+  .faqsec { gap: 28px; }
+  .faqlist { display: flex; flex-direction: column; border-top: 1px solid var(--line); max-width: 820px; }
+  .faqlist details { border-bottom: 1px solid var(--line); padding: 18px 0; }
+  .faqlist summary { cursor: pointer; font-weight: 500; font-size: 18px; list-style: none; display: flex; justify-content: space-between; gap: 16px; }
+  .faqlist summary::-webkit-details-marker { display: none; }
+  .faqlist summary::after { content: '+'; color: var(--accent); font-weight: 400; }
+  .faqlist details[open] summary::after { content: '−'; }
+  .faqlist summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 4px; }
+  .faqlist p { margin-top: 10px; color: var(--ink-2); max-width: 68ch; }
+  .more { border-bottom: 1px solid var(--accent); align-self: flex-start; }
 
   .cta { padding-top: 112px; padding-bottom: 112px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 24px; }
   .mascot { width: 120px; height: auto; }
@@ -371,7 +388,7 @@ const ld = [
     h1 { font-size: 40px; }
     :global(html[lang='zh-CN']) h1 { font-size: 30px; }
     h2 { font-size: 28px; }
-    .cards3, .cases, .stats, .notes, .privacy { grid-template-columns: minmax(0, 1fr); }
+    .cards3, .cases, .stats, .notes { grid-template-columns: minmax(0, 1fr); }
     .card, .case-body { padding: 24px; }
     .loop { padding: 24px; flex-basis: 100%; }
     .chain { flex-direction: column; }

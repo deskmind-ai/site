@@ -101,13 +101,16 @@ const en = {
     how: 'Graders check the final state of files and apps. Every attempt counts, environment failures are listed, and the bench is open.',
     more: 'All results and methods →',
   },
-  privacy: {
-    title: 'Your Mac does the thinking',
-    lead: 'Inference runs locally by default. Here is exactly when anything leaves your machine.',
+  faq: {
+    title: 'Questions people ask first',
+    more: 'All questions →',
+    href: '/docs/start/faq/',
     items: [
-      ['Models download once', 'From Hugging Face, or ModelScope in mainland China. After that, deciding a step needs no network.'],
-      ['A cloud model is opt-in', 'The app never calls one. If you point the router’s escalation tier at a cloud model yourself, the steps routed to it go to that service.'],
-      ['Apps behave as they always do', 'A web page or music app it drives still talks to its own servers.'],
+      ['Does anything leave my Mac?', 'The app itself only goes online to download the models. After that, every decision runs on your Mac and the model servers listen on 127.0.0.1 only. Apps it operates for you, such as Safari, use the network as usual.'],
+      ['Which Macs does it run on?', 'Apple Silicon with macOS 15 or later. The decision models use about 7 GB of memory while running; Macs with less than 12 GB get a warning.'],
+      ['How big is the download?', 'About 5.3 GB of models on first run, checked file by file. If Hugging Face is slow, the app switches to the ModelScope mirror by itself.'],
+      ['Can it do something I did not want?', 'It shows each step, asks before sending, deleting, paying or publishing, stops on ⌘. and pauses when you touch the mouse or keyboard. It can still make mistakes, so start with tasks you can check.'],
+      ['Is it free?', 'Yes. The app, code and models are free. Code is Apache-2.0; model weights follow the terms on each model card.'],
     ],
   },
   cta: {
@@ -122,6 +125,7 @@ const en = {
     licence: 'Code under Apache-2.0, docs under CC BY 4.0. Model weights, base models and datasets follow their own terms.',
     docs: 'Docs',
     discussions: 'Discussions',
+    faq: 'FAQ',
     security: 'Security',
     brand: 'Brand',
   },
@@ -222,13 +226,16 @@ const zh: HomeCopy = {
     how: '评分程序检查文件和应用的最终状态。每次尝试都计入，环境故障单独列出，评测本身开源。',
     more: '全部成绩和方法 →',
   },
-  privacy: {
-    title: '思考在你的 Mac 上完成',
-    lead: '默认在本机推理。下面写清楚了什么情况下数据会离开你的电脑。',
+  faq: {
+    title: '大家最先问的问题',
+    more: '全部常见问题 →',
+    href: '/zh/docs/start/faq/',
     items: [
-      ['模型只下载一次', '从 Hugging Face 下载，国内可用 ModelScope。之后每一步决策都不需要联网。'],
-      ['云端模型需要你自己接', 'App 不会调用云端模型。如果你自己把路由的升级层指向云端模型，交给它的步骤会发送到那个服务。'],
-      ['被操作的应用照常联网', '它操作的网页或音乐应用，仍会和各自的服务器通信。'],
+      ['会有数据离开我的 Mac 吗？', 'App 自己只在下载模型时联网。之后每一步决策都在你的 Mac 上完成，模型服务只监听 127.0.0.1。它替你操作的应用（比如 Safari）照常联网。'],
+      ['哪些 Mac 能用？', 'Apple Silicon 芯片、macOS 15 及以上。决策模型运行时约占 7 GB 内存，内存小于 12 GB 的 Mac 会收到提示。'],
+      ['要下载多少东西？', '第一次运行时下载约 5.3 GB 模型，逐个文件校验。Hugging Face 慢的话，App 会自动改从 ModelScope 镜像下载。'],
+      ['它会不会做我不想做的事？', '它边做边显示每一步；发送、删除、付款、发布前会先问你；按 ⌘. 停止，碰一下鼠标或键盘就暂停。它仍然会出错，建议先从你能检查结果的任务开始。'],
+      ['免费吗？', '免费。App、代码和模型都免费。代码采用 Apache-2.0，模型权重遵循各模型卡上的条款。'],
     ],
   },
   cta: {
@@ -243,6 +250,7 @@ const zh: HomeCopy = {
     licence: '代码采用 Apache-2.0，文档采用 CC BY 4.0；模型权重、基座模型和数据集遵循各自条款。',
     docs: '文档',
     discussions: '讨论区',
+    faq: '常见问题',
     security: '安全',
     brand: '品牌',
   },
