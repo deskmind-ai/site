@@ -21,7 +21,7 @@ Prefer a terminal? You can also run the models yourself: see the [Quickstart](/d
 
 ## Install
 
-1. Download the DMG (v0.3.0) from the [latest release](https://github.com/deskmind-ai/app/releases/latest).
+1. Download the DMG from the [latest release](https://github.com/deskmind-ai/app/releases/latest).
 2. Open it and drag **DeskMind** into **Applications**.
 3. Open DeskMind from Applications.
 

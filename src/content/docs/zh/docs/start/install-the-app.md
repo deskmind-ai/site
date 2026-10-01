@@ -18,7 +18,7 @@ DeskMind 的 Mac App 把整个循环都装在一起：输入目标，确认它�
 
 ## 安装
 
-1. 从 [最新发布页](https://github.com/deskmind-ai/app/releases/latest)下载 DMG（v0.3.0）。
+1. 从 [最新发布页](https://github.com/deskmind-ai/app/releases/latest)下载 DMG。
 2. 打开 DMG，把 **DeskMind** 拖进「应用程序」。
 3. 从「应用程序」里打开 DeskMind。
 
