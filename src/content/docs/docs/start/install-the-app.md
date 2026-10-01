@@ -8,24 +8,20 @@ sidebar:
 DeskMind for Mac puts the whole loop in one native app: you type a goal, confirm which apps it may use, and it
 operates them for you, showing each step and why.
 
-:::caution[Not public yet]
-The Mac app has not been released yet. When it is, builds will be published on
-[github.com/deskmind-ai/app/releases](https://github.com/deskmind-ai/app/releases). Until then you can run the
-models yourself: see the [Quickstart](/docs/start/quickstart/).
-:::
+Prefer a terminal? You can also run the models yourself: see the [Quickstart](/docs/start/quickstart/).
 
 ## Requirements
 
 - A Mac with Apple Silicon.
 - macOS 15 or later.
-- Disk space for the models: about 5.3 GB for the planner (0.8B + 4B), plus about 3.3 GB if you add the optional
+- Disk space for the models: about 5.3 GB for the decision models (0.8B + 4B), plus about 3.3 GB if you add the optional
   vision model. The app warns you before the download if less than about 7.5 GB is free.
-- Memory: the two planner models and their runtime take about 7 GB of memory while they run. On a Mac with less than
+- Memory: the two decision models and their runtime take about 7 GB of memory while they run. On a Mac with less than
   12 GB the app shows a warning: the model may be slow or fail to load, so quit other apps first.
 
 ## Install
 
-1. Download the DMG from the [releases page](https://github.com/deskmind-ai/app/releases).
+1. Download the DMG (v0.3.0) from the [latest release](https://github.com/deskmind-ai/app/releases/latest).
 2. Open it and drag **DeskMind** into **Applications**.
 3. Open DeskMind from Applications.
 
@@ -45,21 +41,21 @@ items are ready.
 | Item | What it is for | Required |
 |---|---|---|
 | Background helper | starts DeskMind Hands | yes |
-| Local model | downloads and starts the planner models | yes |
+| Local model | downloads and starts the decision models | yes |
 | Accessibility | reads the buttons and text in windows, and clicks and types for you | yes |
 | Screen Recording | sees what is on screen, to tell how far a task has got | yes |
 | Automation | lets Finder and TextEdit save and move files in the background | optional |
 | Vision model | finds controls in apps without an accessibility tree | optional |
 
 For Accessibility and Screen Recording, the app opens the right page of System Settings and shows the DeskMind Hands
-icon next to it. Drag the icon into the list, then turn on the switch next to **DeskMind Hands**. The row confirms
-itself once the switch is on, and the helper restarts to pick up the grant without closing your window.
+icon next to it. Drag the icon into the list, then turn on the switch next to **DeskMind Hands**. The row turns to
+done by itself once the switch is on, and the helper restarts to pick up the grant without closing your window.
 
 Automation is granted through the system's own prompt the first time the helper scripts an app.
 
 ## First run: the model download
 
-The first time, the **Local model** row asks for a download of about 5.3 GB (the 0.8B and the 4B planner models).
+The first time, the **Local model** row asks for a download of about 5.3 GB (the 0.8B and the 4B decision models).
 
 - The app downloads the release models (DeskMind Brain G18b) from Hugging Face, pinned to exact revisions, and checks
   every file against a SHA-256 hash before using it.
@@ -72,7 +68,7 @@ The vision model (about 3.3 GB) is downloaded only when you ask for it, from its
 task needs it.
 
 :::note[What uses the network]
-The only network requests the app makes itself are the model downloads. The planner and vision servers listen on
+The only network requests the app makes itself are the model downloads. The decision and vision servers listen on
 `127.0.0.1` only and run offline. Screens, screenshots, run traces and recordings stay on your Mac. Apps that DeskMind
 operates for you, such as Safari, use the network as they normally would.
 :::

@@ -7,7 +7,7 @@ sidebar:
 
 Brain 只提供一个决策接口：你发来一个状态和一组带类型的问题，它为每个问题返回一个回答，每个选项都附带概率。整个过程不生成文本。
 
-本页描述的是 [deskmind-ai/brain](https://github.com/deskmind-ai/brain) 里的服务（`deskmind-brain-serve`）。它和 System One 类决策接口同一格式，已有客户端只需改 base URL。
+本页描述的是 [deskmind-ai/brain](https://github.com/deskmind-ai/brain) 里的服务（`deskmind-brain-serve`）。请求和返回格式固定，按这个格式写的客户端只需改 base URL。
 
 ## 接口
 
@@ -20,7 +20,7 @@ Brain 只提供一个决策接口：你发来一个状态和一组带类型的�
 
 ## 请求
 
-```json
+```jsonc
 {
   "state": { "page": { "title": "ws", "text": "…" }, "elements": [ … ] },
   "model": "deskmind-brain",
@@ -37,7 +37,7 @@ Brain 只提供一个决策接口：你发来一个状态和一组带类型的�
 | 字段 | 类型 | 必填 | 含义 |
 |---|---|---|---|
 | `state` | 任意 JSON 值 | 是 | 要模型看的内容。对象会渲染成 JSON；字符串原样使用。 |
-| `questions` | 对象 | 是 | 问题 id → 问题。id 由你定，但请看[智能体请求](#智能体请求)。 |
+| `questions` | 对象 | 是 | 问题 id → 问题。id 由你定，但请看[agent 请求](#agent-请求)。 |
 | `model` | 字符串 | 否 | 为兼容而接受，服务不会用它来选模型。 |
 
 ### 问题
@@ -54,7 +54,7 @@ Brain 只提供一个决策接口：你发来一个状态和一组带类型的�
 
 ## 返回
 
-```json
+```jsonc
 {
   "id": "05f621607d574a47a075e85ee4b8f67b",
   "model": "deskmind-brain-local",
@@ -70,7 +70,7 @@ Brain 只提供一个决策接口：你发来一个状态和一组带类型的�
 | `id` | 每次返回都是新的 id |
 | `model` | 服务的 `--model-name`（默认 `deskmind-brain-local`） |
 | `answers` | 问题 id → 回答，请求里每个问题各一项 |
-| `usage.input_tokens` | 所发状态和问题的 token 数；后端没有分词器时为 `null` |
+| `usage.input_tokens` | 所发状态和问题（JSON 文本）的 token 数，不是模型实际读到的提示长度，提示会渲染得更紧凑；后端没有分词器时为 `null` |
 | `usage.output_tokens` | 始终为 0：不生成文本 |
 | `latency_ms` | 服务处理这个请求用的时间 |
 | `routing` | 只在两级服务时出现，见[路由](#路由) |
@@ -78,9 +78,9 @@ Brain 只提供一个决策接口：你发来一个状态和一组带类型的�
 
 ### 各类型的回答
 
-**choice**
+#### choice
 
-```json
+```jsonc
 { "type": "choice", "choice": "CLICK", "probabilities": { "CLICK": 0.96, "OPEN": 0.0047, … }, "confidence": 0.9555 }
 ```
 
@@ -88,7 +88,7 @@ Brain 只提供一个决策接口：你发来一个状态和一组带类型的�
 - `probabilities`：每个选项键一项，总和为 1。
 - `confidence`：`K` 个选项时为 `(K × p_max − 1) / (K − 1)`。各选项概率相等时为 0，全部概率集中在一个选项上时为 1。
 
-**score**
+#### score
 
 ```json
 { "type": "score", "score": 1.8, "legend": { "0": "…", "1": "…", "2": "…" }, "probabilities": { "0": 0.05, "1": 0.1, "2": 0.85 }, "confidence": 0.66 }
@@ -98,7 +98,7 @@ Brain 只提供一个决策接口：你发来一个状态和一组带类型的�
 - `legend`：等级编号 → 你给的等级说明。
 - `confidence`：`1 − 2 × E|等级 − score| / (K − 1)`，最低为 0。
 
-**noul**
+#### noul
 
 ```json
 { "type": "noul", "noul": 0.93 }
@@ -119,11 +119,11 @@ Brain 只提供一个决策接口：你发来一个状态和一组带类型的�
 ## 多个问题
 
 - 一个请求里的所有问题都针对同一个状态。状态和所有问题共用的说明组成一段公共的提示前缀，只计算一次；每个问题是从它分出去的一小段。
-- 各问题的回答彼此独立。除了下面智能体请求里说的情况，服务不会让一个回答依赖另一个。
+- 各问题的回答彼此独立。除了下面 agent 请求里说的情况，服务不会让一个回答依赖另一个。
 
-### 智能体请求
+### agent 请求
 
-请求里如果有 id 为 `operation` 的问题，就按智能体的一步来处理，也就是 Hands 发送的格式：
+请求里如果有 id 为 `operation` 的问题，就按 agent 的一步来处理，也就是 Hands 发送的格式：
 
 - `operation` 是在各种操作（`CLICK`、`TYPE_TEXT`、`KEY`、`DONE`、`BLOCKED` 等）之间的 `choice`。
 - 每种操作的参数是单独的问题，命名为 `<操作>_target`（小写）：`click_target`、`select_target`、`key_target` 等。文本类操作（`TYPE_TEXT`、`REPLACE_TEXT`、`APPEND_TEXT`、`RENAME`）还会用到 `type_text_value`，`REPLACE_TEXT` 还会用到 `replace_from`。
@@ -181,7 +181,7 @@ Brain 只提供一个决策接口：你发来一个状态和一组带类型的�
 | `--host` | `127.0.0.1` | 监听地址 |
 | `--port` | `8787` | 监听端口 |
 | `--cache-size` | `64` | 重复请求缓存的条数；0 表示关闭 |
-| `--two-stage` | 关 | 智能体请求：先给操作打分，再只给它需要的问题打分 |
+| `--two-stage` | 关 | agent 请求：先给操作打分，再只给它需要的问题打分 |
 | `--escalate-to` | 无 | 在同一进程里运行的强模型；此时 `--predictor` 是快模型 |
 | `--threshold` | 快模型 `deskmind.json` 里的 `router_threshold`，没有则为 0.94 | 配合 `--escalate-to`：低于这个值就升级 |
 | `--no-keep-done-over-undo` | 关 | 配合 `--escalate-to`：允许强模型用撤销点击替换快模型的 `DONE` |

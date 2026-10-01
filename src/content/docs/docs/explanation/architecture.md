@@ -62,7 +62,7 @@ and records what happened. Actions go to the target window through the accessibi
 [Peekaboo](https://github.com/steipete/Peekaboo)'s window-targeted input, not through the global mouse and keyboard,
 so you can keep working while it runs. Steps that only work in the foreground are refused unless you allow them.
 Hands also has a mock desktop (a real file system behind a simulated Finder and editor) that runs without any
-permissions, and it is where Brain's training data comes from.
+permissions, and much of Brain's desktop training data comes from it.
 
 ### Eyes
 
@@ -75,7 +75,7 @@ accessibility tree.
 
 [deskmind-ai/bench](https://github.com/deskmind-ai/bench). Thirteen sandbox tasks on the real Finder, TextEdit and
 Safari, with graders that check the final state. `deskmind-bench score` regrades finished runs from disk and needs
-only Python: no Mac, no driver, no model. `deskmind-bench run` executes runs through Hands against a planner URL; it
+only Python: no Mac, no driver, no model. `deskmind-bench run` executes runs through Hands against a decision server URL; it
 refuses a non-local URL unless you pass `--allow-remote`.
 
 ## How they talk
@@ -104,7 +104,7 @@ The Mac app is two bundles:
   runs everything else. It bundles its own Python 3.12 runtime with Hands, the Peekaboo CLI and an on-device OCR helper.
 
 For each goal, the helper starts one Hands run, which talks to the Brain server the helper keeps on port 18850 (0.8B
-with the 4B behind `--escalate-to`). The Eyes server starts before a run that may need it and stops after ten minutes
+with the 4B behind `--escalate-to`). The Eyes server starts before a run that may need it and stops after thirty minutes
 without a run, since it holds about 4 GB.
 
 When Hands needs you, it prints a question or an approval request; the helper forwards it to the app, which shows a

@@ -6,7 +6,8 @@ template: doc
 
 DeskMind 得心 is a set of small open models and tools that operate a Mac: **Eyes** finds things on screen, **Brain**
 decides the next step, **Hands** carries it out, and **Bench** checks what really happened. Inference runs on your
-Mac by default.
+Mac by default: the models download once, and only an optional remote escalation tier, if you set one up, sees
+the steps routed to it.
 
 New here? Read [What is DeskMind](/docs/start/what-is-deskmind/), then
 [run Brain on your Mac](/docs/start/quickstart/).

@@ -36,3 +36,21 @@
 }
 .site-title img { height: 28px; width: auto; }
 .sl-markdown-content h1, .sl-markdown-content h2, .sl-markdown-content h3, h1#_top { font-weight: 500; }
+
+/* Asides in the brand palette instead of Starlight's blue / purple: note = ink on paper, tip = soft orange. */
+:root {
+  --sl-color-blue-low: #2C312E; --sl-color-blue: #A7AAA3; --sl-color-blue-high: #F4F1EA;
+  --sl-color-purple-low: #3a231c; --sl-color-purple: #D9714F; --sl-color-purple-high: #F2C8B8;
+}
+:root[data-theme='light'] {
+  --sl-color-blue-low: #ECE8DF; --sl-color-blue: #5C625E; --sl-color-blue-high: #262B28;
+  --sl-color-purple-low: #F6E6DF; --sl-color-purple: #C95536; --sl-color-purple-high: #7A2E1A;
+}
+/* Current page in the sidebar: a soft tint, not a solid orange block. */
+.sidebar-content a[aria-current='page'],
+.sidebar-content a[aria-current='page']:hover,
+.sidebar-content a[aria-current='page']:focus {
+  background-color: var(--sl-color-accent-low);
+  color: var(--sl-color-white);
+  font-weight: 500;
+}

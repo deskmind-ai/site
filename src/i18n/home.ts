@@ -106,7 +106,7 @@ const en = {
     lead: 'Inference runs locally by default. Here is exactly when anything leaves your machine.',
     items: [
       ['Models download once', 'From Hugging Face, or ModelScope in mainland China. After that, deciding a step needs no network.'],
-      ['A remote tier is opt-in', 'If you add a cloud model as a third tier, the steps routed to it are sent to that service.'],
+      ['A cloud model is opt-in', 'The app never calls one. If you point the router’s escalation tier at a cloud model yourself, the steps routed to it go to that service.'],
       ['Apps behave as they always do', 'A web page or music app it drives still talks to its own servers.'],
     ],
   },
@@ -227,7 +227,7 @@ const zh: HomeCopy = {
     lead: '默认在本机推理。下面写清楚了什么情况下数据会离开你的电脑。',
     items: [
       ['模型只下载一次', '从 Hugging Face 下载，国内可用 ModelScope。之后每一步决策都不需要联网。'],
-      ['远程模型需要你主动开启', '如果你加了云端模型作为第三层，交给它的步骤会发送到那个服务。'],
+      ['云端模型需要你自己接', 'App 不会调用云端模型。如果你自己把路由的升级层指向云端模型，交给它的步骤会发送到那个服务。'],
       ['被操作的应用照常联网', '它操作的网页或音乐应用，仍会和各自的服务器通信。'],
     ],
   },

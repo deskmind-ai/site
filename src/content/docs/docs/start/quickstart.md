@@ -9,7 +9,7 @@ This page runs **Brain**, the decision model, on your Mac and asks it for one st
 answers the question; it does not drive the desktop by itself. To act on the desktop, add
 [Hands](https://github.com/deskmind-ai/hands).
 
-Time: about five minutes plus the download (4.2 GB for the 4B model).
+Time: about five minutes plus the download (4.5 GB for the 4B model).
 
 ## Before you start
 
@@ -34,7 +34,8 @@ The `mlx` extra installs the MLX serving stack, pinned to the versions the relea
 uv run hf download deskmind/brain-4b --revision g18b-q8 --local-dir models/brain-4b
 ```
 
-`g18b-q8` is the current release (G18b, 8-bit). The download is 4.2 GB.
+G18b is the name of the current model release (the 18b training round); `g18b-q8` is its 8-bit tag on Hugging Face.
+The download is 4.5 GB.
 
 :::tip[If the download fails with `CAS Client Error`]
 That error comes from the Xet transfer path. Retry with `HF_HUB_DISABLE_XET=1` in front of the command:
@@ -48,7 +49,7 @@ HF_HUB_DISABLE_XET=1 uv run hf download deskmind/brain-4b --revision g18b-q8 --l
 ModelScope carries the same files:
 
 ```bash
-uvx modelscope download --model gxcsoccer/brain-4b --local-dir models/brain-4b
+uvx modelscope download --model gxcsoccer/brain-4b --revision g18b-q8 --local-dir models/brain-4b
 ```
 :::
 
@@ -142,7 +143,7 @@ The released setup is a router: the 0.8B model answers each step, and unsure or 
 uv run hf download deskmind/brain-0.8b --revision g18b-q8 --local-dir models/brain-0.8b
 ```
 
-(On ModelScope: `gxcsoccer/brain-0.8b`.) Then serve both tiers in one process:
+(On ModelScope: `gxcsoccer/brain-0.8b`, with the same `--revision g18b-q8`.) Then serve both tiers in one process:
 
 ```bash
 uv run deskmind-brain-serve --predictor mlx:models/brain-0.8b --escalate-to mlx:models/brain-4b \
@@ -162,12 +163,16 @@ The threshold ships with the weights: `router_threshold` in the 0.8B's `deskmind
 overrides it. How the router decides is explained in [System One](/docs/explanation/system-one/#two-tiers-08b-then-4b).
 
 :::note[Two separate servers]
-The tiers can also run as separate servers, the 0.8B on port 8794 and the 4B on port 8793, with a router in front:
+The tiers can also run as separate servers: the 4B on port 8793 (started as in step 3), the 0.8B on port 8794, and a
+router in front on port 8796. Run each command in its own terminal:
 
 ```bash
+uv run deskmind-brain-serve --predictor mlx:models/brain-0.8b --port 8794 --two-stage
 uv run python scripts/router_serve.py --fast http://127.0.0.1:8794 --strong http://127.0.0.1:8793 \
-  --keep-done-over-undo --port 8796
+  --threshold 0.96 --keep-done-over-undo --port 8796
 ```
+
+Unlike `deskmind-brain-serve`, `router_serve.py` does not read the threshold from `deskmind.json`, so pass it yourself.
 :::
 
 ## Next steps

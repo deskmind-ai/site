@@ -50,7 +50,7 @@ correctness.** In particular:
   certain.
 - **Calibration is measured, and it is imperfect.** On the 231 public JevBench items, the G18b 4B has an expected
   calibration error (ECE) of 0.089 and a Brier score of 0.269. Its stated confidence and its accuracy differ by
-  several points on average.
+  about 9 percentage points on average.
 - **The 0.8B's confidences are compressed.** In release G18b they sit in a narrow band, about 0.94 to 0.97. That is
   why its routing threshold is so high, and why most steps go to the 4B.
 - **Confidence on one set does not transfer for free.** The threshold was first chosen on held-out desktop tasks; that

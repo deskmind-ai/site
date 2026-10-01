@@ -1,17 +1,17 @@
 ---
-title: 得心文档
-description: 得心如何看清屏幕、决定下一步、在你的 Mac 上动手，以及怎样自己跑起来。
+title: DeskMind 文档
+description: DeskMind 如何看清屏幕、决定下一步、在你的 Mac 上动手，以及怎样自己跑起来。
 template: doc
 ---
 
-得心（DeskMind）是一组开源小模型和工具，用来操作 Mac：**Eyes** 在屏幕上找目标，**Brain** 决定下一步，**Hands** 负责执行，**Bench** 检查是否真的做成了。推理默认在你的 Mac 上进行。
+DeskMind 得心是一组开源小模型和工具，用来操作 Mac：**Eyes** 在屏幕上找目标，**Brain** 决定下一步，**Hands** 负责执行，**Bench** 检查是否真的做成了。推理默认在你的 Mac 上进行：模型只需下载一次；只有你自己设置了可选的远程升级层时，交给它的步骤才会发到那个服务。
 
-第一次来？先读[得心是什么](/zh/docs/start/what-is-deskmind/)，再[在 Mac 上跑起 Brain](/zh/docs/start/quickstart/)。
+第一次来？先读[DeskMind 是什么](/zh/docs/start/what-is-deskmind/)，再[在 Mac 上跑起 Brain](/zh/docs/start/quickstart/)。
 
 ## 入门
 
-- [得心是什么](/zh/docs/start/what-is-deskmind/)：工作循环、适合谁、现在能做什么、还做不到什么。
-- [安装应用](/zh/docs/start/install-the-app/)：系统要求、权限和首次下载模型。
+- [DeskMind 是什么](/zh/docs/start/what-is-deskmind/)：工作循环、适合谁、现在能做什么、还做不到什么。
+- [安装 Mac App](/zh/docs/start/install-the-app/)：系统要求、权限和首次下载模型。
 - [快速上手](/zh/docs/start/quickstart/)：五分钟在 Mac 上跑起 Brain。
 
 ## 操作指南

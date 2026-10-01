@@ -5,7 +5,7 @@ sidebar:
   order: 2
 ---
 
-得心所有仓库的安全政策都在 [deskmind-ai/.github/SECURITY.md](https://github.com/deskmind-ai/.github/blob/main/SECURITY.md)。本页是摘要，以该文件为准。
+DeskMind 所有仓库的安全政策都在 [deskmind-ai/.github/SECURITY.md](https://github.com/deskmind-ai/.github/blob/main/SECURITY.md)。本页是摘要，以该文件为准。
 
 ## 私下报告
 
@@ -29,4 +29,4 @@ sidebar:
 
 ## 什么在哪里运行
 
-要判断某个行为算不算泄露，先要知道哪些部分本来就会联网。默认情况下推理在你的 Mac 上进行；下载模型、得心替你操作的应用会联网；可选的远程升级层会收到发给它的请求。见[架构：哪些在本机运行](/zh/docs/explanation/architecture/#哪些在本机运行)。
+要判断某个行为算不算泄露，先要知道哪些部分本来就会联网。默认情况下推理在你的 Mac 上进行；下载模型、DeskMind 替你操作的应用会联网；可选的远程升级层会收到发给它的请求。见[架构：哪些在本机运行](/zh/docs/explanation/architecture/#哪些在本机运行)。

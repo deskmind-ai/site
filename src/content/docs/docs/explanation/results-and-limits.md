@@ -14,7 +14,7 @@ All numbers on this page are our own runs, from release **G18b** (October 2026).
 Setup: [Bench](https://github.com/deskmind-ai/bench) suite v25, 13 sandbox tasks on the real Finder, TextEdit and
 Safari, 3 runs each, strict pass. Run through the DeskMind app on one M4 Pro with 48 GB of memory.
 
-| Config | Strict pass | False "done" | Decision time p50 / p95 |
+| Config | Strict pass | False "done" | Decision time (median / slowest 5%) |
 |---|---|---|---|
 | **Router G18b** (0.8B → 4B, 8-bit, threshold 0.96), current | **39/39** | **0** | 2.85 / 9.82 s |
 | Router G14 (0.8B → 4B, 8-bit, threshold 0.94), earlier release | 36/39 | 0 | 0.57 / 5.25 s |
@@ -22,8 +22,9 @@ Safari, 3 runs each, strict pass. Run through the DeskMind app on one M4 Pro wit
 - **Strict pass** means every checkpoint passed, no guard was broken, no forbidden side effect happened, and the
   sentinel files were untouched. The grader checks the final state, not what the agent said.
 - **False "done"** counts runs where the agent declared the task finished and the grader disagreed.
-- **Conditions of the G18b run:** no environment errors, no no-progress loops. The app's optional checks and notes were
-  off, including the [done-check](/docs/explanation/system-one/#checking-before-saying-done). Decision times are over
+- **Conditions of the G18b run:** no environment errors, and no run got stuck repeating itself. The app's optional checks
+  were off, including the [done-check](/docs/explanation/system-one/#checking-before-saying-done), and so were the
+  extra notes on each action's effect that newer models are shown. Decision times are over
   208 decisions.
 - **One task was not clean.** In all 3 runs of the Chinese exact-text task, the file was right but the model never
   said "done"; each run used its full 20-step budget. The grader checks the final state, so these count as passes.
@@ -36,9 +37,9 @@ of it was measured on one Mac, with a Chinese system language.
 
 ## Decision time
 
-Decision time is the planner's time per step, not the time a whole task takes.
+Decision time is the decision model's time per step, not the time a whole task takes.
 
-| Steps | Share | p50 | p95 |
+| Steps | Share | Median | Slowest 5% |
 |---|---|---|---|
 | answered by the 0.8B | about 30% | 0.48 s | 0.66 s |
 | escalated to the 4B | about 70% | 3.6 s | 9.8 s |
@@ -72,8 +73,9 @@ maintainers.
 - **G18b is weaker than G14 on general judgement.** On the hard tier the 4B dropped from 85 to 76, mostly temporal and
   numeric, hard-judgement and multi-hop items. G18b's training leans further toward desktop states. The release keeps
   G18b for its real-desktop reliability.
-- **Calibration (G18b 4B):** Brier 0.269, ECE 0.089 (G14: 0.230, 0.079).
-- **No overlap:** the G18b training mix (100,703 items) shares no word 13-gram and no option set with the 231 public
+- **Calibration (G18b 4B):** Brier 0.269, ECE 0.089 (G14: 0.230, 0.079); lower is better for both. See
+  [what a probability means](/docs/explanation/system-one/#what-a-probability-means).
+- **No overlap:** the G18b training mix (100,703 items) shares no 13-word sequence and no option set with the 231 public
   items.
 
 ## Visual grounding (Eyes)
@@ -104,5 +106,5 @@ From our own trials outside the bench suite (not yet measured on a published tas
 
 The suite, graders and harness version for each number are in
 [deskmind-ai/bench](https://github.com/deskmind-ai/bench): `deskmind-bench score` regrades finished runs from disk,
-and `deskmind-bench run` executes the suite against any planner behind `/v1/systemone`. A reproduction that disagrees
+and `deskmind-bench run` executes the suite against any decision server behind `/v1/systemone`. A reproduction that disagrees
 with ours is welcome; see [Contributing](/docs/project/contributing/).

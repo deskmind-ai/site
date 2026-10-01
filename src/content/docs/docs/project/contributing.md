@@ -26,8 +26,8 @@ Start with issues labelled **good first issue**. Each one says which file to cha
 
 ## Principles
 
-1. **Evidence over opinion.** A change that affects model behaviour comes with before/after numbers on a probe set or
-   a bench run.
+1. **Evidence over opinion.** A change that affects model behaviour comes with before/after numbers on a small targeted
+   test set or a bench run.
 2. **Local first and private by default.** Never commit real user data, screenshots of your own apps, credentials,
    tokens or raw desktop traces. Keep them in a git-ignored `private/` directory, and redact identifying paths and
    values while keeping enough structure to reproduce.
@@ -44,7 +44,7 @@ Start with issues labelled **good first issue**. Each one says which file to cha
   [app](https://github.com/deskmind-ai/app/issues)).
 - **A change spanning repositories:** one coordinating issue in deskmind, linked to focused issues or pull requests in
   each component.
-- **Questions and design discussion:** [Discussions](https://github.com/orgs/deskmind-ai/discussions).
+- **Questions and design discussion:** [Discussions](https://github.com/deskmind-ai/deskmind/discussions).
 - **Security problems:** not in public. See [Security](/docs/project/security/).
 
 Search first. If a report moves, link the old and new locations instead of opening an unlinked duplicate.
@@ -69,12 +69,12 @@ A failed reproduction is as useful as a successful one. Record:
 - the track: Brain, Eyes, end-to-end, or deployment speed;
 - fixed source, model and data revisions, and the suite version;
 - hardware, OS, runtime, quantization and decoding;
-- repeats, retries, limits, routing, one-pass or two-pass;
+- repeats, retries, limits, routing, and a single pass or two (such as Eyes' zoom pass);
 - numerator and denominator, with every attempted run and every exclusion;
 - what the timing covers: inference, the request, or the full task.
 
 Compare only matched conditions: keep GPU and MLX runs, single models and routers, and different harness versions
-apart. A mock or oracle run checks the wiring; it is not a model score. Never post sealed test items or data you may
+apart. A run on the mock desktop, or one fed the correct answers by a script, checks the wiring; it is not a model score. Never post sealed test items or data you may
 not redistribute.
 
 ## Pull requests to Brain
@@ -99,4 +99,5 @@ uv run --group dev pytest -q # must pass before you open a PR
 - Be kind. DeskMind follows the
   [Contributor Covenant 2.1](https://github.com/deskmind-ai/.github/blob/main/CODE_OF_CONDUCT.md). Report conduct
   problems to conduct@deskmind.dev or privately to a maintainer.
-- Contributions are licensed under the licence of the repository they go into (Apache-2.0 for code).
+- Contributions are licensed under the licence of the repository they go into (Apache-2.0 for code, CC BY 4.0 for
+  docs).

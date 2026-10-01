@@ -23,8 +23,8 @@ HF_HUB_DISABLE_XET=1 uv run hf download deskmind/brain-4b --revision g18b-q8 --l
 Download the same files from ModelScope:
 
 ```bash
-uvx modelscope download --model gxcsoccer/brain-4b --local-dir models/brain-4b
-uvx modelscope download --model gxcsoccer/brain-0.8b --local-dir models/brain-0.8b
+uvx modelscope download --model gxcsoccer/brain-4b --revision g18b-q8 --local-dir models/brain-4b
+uvx modelscope download --model gxcsoccer/brain-0.8b --revision g18b-q8 --local-dir models/brain-0.8b
 ```
 
 The app does this by itself: if Hugging Face fails, or a file arrives at under about 200 KB/s for its first 30
@@ -66,8 +66,9 @@ Real desktop runs need **Accessibility** and **Screen Recording**.
   Recording** on the app's home screen, then run the task again.
 - **Automation** is optional. It lets Finder and TextEdit save and move files in the background, and is granted
   through the system's prompt the first time it is needed.
-- **Running Hands from a terminal,** grant Screen Recording and Accessibility to the app that hosts Peekaboo (for
-  example your terminal), and check what the machine can run with:
+- **Running Hands from a terminal,** grant Screen Recording and Accessibility to the app Hands runs in (for example
+  your terminal), since [Peekaboo](https://github.com/steipete/Peekaboo), the tool Hands uses for screen capture and
+  input, runs inside it. Then check what the machine can run with:
 
   ```bash
   deskmind-hands doctor
@@ -77,13 +78,13 @@ Real desktop runs need **Accessibility** and **Screen Recording**.
 
 ## Memory and disk
 
-- **Disk:** the 4B is a 4.2 GB download and the 0.8B 0.8 GB. In the app, the planner models take about 5.3 GB and the
+- **Disk:** the 4B is a 4.5 GB download and the 0.8B 0.8 GB. In the app, the decision models take about 5.3 GB and the
   optional vision model about 3.3 GB. The app warns you before the download if less than about 7.5 GB is free.
-- **Memory:** the two planner models and their runtime take about 7 GB while they run. On a Mac with less than 12 GB
+- **Memory:** the two decision models and their runtime take about 7 GB while they run. On a Mac with less than 12 GB
   the app warns that the model may be slow or fail to load.
 - If the app says **Not enough memory**, quit a few memory-hungry apps and click **Retry**.
 - The vision model holds about 4 GB while loaded. The app starts it only for runs that may need it and stops it after
-  ten minutes without a run.
+  thirty minutes without a run.
 
 Our measurements were made on an M4 Pro with 48 GB. We have not measured smaller machines.
 

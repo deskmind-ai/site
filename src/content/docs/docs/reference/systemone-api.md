@@ -9,8 +9,8 @@ Brain serves one decision endpoint. You send a state and a set of typed question
 question, each with a probability for every option. Nothing is generated.
 
 This page describes the server in [deskmind-ai/brain](https://github.com/deskmind-ai/brain)
-(`deskmind-brain-serve`). The shape is the same as other System One–style decision APIs, so an existing client only
-needs its base URL changed.
+(`deskmind-brain-serve`). The request and response shape is fixed, so any client written for it only needs the base
+URL.
 
 ## Endpoints
 
@@ -24,7 +24,7 @@ Requests are answered one at a time.
 
 ## Request
 
-```json
+```jsonc
 {
   "state": { "page": { "title": "ws", "text": "…" }, "elements": [ … ] },
   "model": "deskmind-brain",
@@ -59,7 +59,7 @@ model with the question.
 
 ## Response
 
-```json
+```jsonc
 {
   "id": "05f621607d574a47a075e85ee4b8f67b",
   "model": "deskmind-brain-local",
@@ -75,7 +75,7 @@ model with the question.
 | `id` | a new id for every reply |
 | `model` | the server's `--model-name` (default `deskmind-brain-local`) |
 | `answers` | question id → answer, one per question in the request |
-| `usage.input_tokens` | tokens in the state and questions as sent; `null` if the backend has no tokenizer |
+| `usage.input_tokens` | tokens in the state and questions as sent (their JSON text), not the prompt the model actually reads, which is rendered more compactly; `null` if the backend has no tokenizer |
 | `usage.output_tokens` | always 0: nothing is generated |
 | `latency_ms` | time the server spent on the request |
 | `routing` | only when two tiers are served; see [Routing](#routing) |
@@ -83,9 +83,9 @@ model with the question.
 
 ### Answers by type
 
-**choice**
+#### choice
 
-```json
+```jsonc
 { "type": "choice", "choice": "CLICK", "probabilities": { "CLICK": 0.96, "OPEN": 0.0047, … }, "confidence": 0.9555 }
 ```
 
@@ -94,7 +94,7 @@ model with the question.
 - `confidence`: `(K × p_max − 1) / (K − 1)` for `K` options. It is 0 when all options are equally likely and 1 when
   one option has all the probability.
 
-**score**
+#### score
 
 ```json
 { "type": "score", "score": 1.8, "legend": { "0": "…", "1": "…", "2": "…" }, "probabilities": { "0": 0.05, "1": 0.1, "2": 0.85 }, "confidence": 0.66 }
@@ -104,7 +104,7 @@ model with the question.
 - `legend`: level index → your level description.
 - `confidence`: `1 − 2 × E|level − score| / (K − 1)`, floored at 0.
 
-**noul**
+#### noul
 
 ```json
 { "type": "noul", "noul": 0.93 }

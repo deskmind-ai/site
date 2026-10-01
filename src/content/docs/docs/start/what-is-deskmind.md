@@ -54,8 +54,7 @@ Each component can be used on its own. For how they connect, see [Architecture](
 
 - **Developers and researchers** building computer-use agents who want typed, local step decisions behind one HTTP
   API: start with the [Quickstart](/docs/start/quickstart/).
-- **People who want to try a local agent on their own Mac:** see [Install the app](/docs/start/install-the-app/). The
-  app is not public yet.
+- **People who want to try a local agent on their own Mac:** see [Install the app](/docs/start/install-the-app/).
 - **Anyone who wants to measure an agent honestly:** Bench scores runs from disk with strict graders.
 
 ## What it can and cannot do yet
@@ -63,8 +62,9 @@ Each component can be used on its own. For how they connect, see [Architecture](
 What works today, measured on our real-desktop bench (13 tasks × 3 runs, all 39 passed, no false "done"):
 
 - Finder: make folders, move and rename files, navigate, sort files into folders.
-- TextEdit: change fields exactly, type Chinese text with full-width punctuation, save.
-- Crossing apps: read a table in Safari and append it, sorted, to a CSV; copy values between documents.
+- TextEdit: change fields exactly, type Chinese text with full-width punctuation, save. (On the Chinese-text task the
+  file comes out right, but the model does not yet say "done" by itself.)
+- Crossing apps: read a short (four-row) table in Safari and append it, sorted, to a CSV; copy values between documents.
 - Behaving well: ask when the goal is ambiguous, edit only the document the goal names, stop when cancelled.
 
 What it cannot do yet, or does poorly:

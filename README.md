@@ -50,8 +50,11 @@ the GitHub, Hugging Face and ModelScope links resolve.
 - Check the numbers against `brain/docs/results.md`.
 - Point the download buttons at the published App release (`APP_DOWNLOAD` in `src/i18n/home.ts`).
 - Make sure `security@deskmind.dev` forwards to a monitored inbox.
+- Push this repo to `github.com/deskmind-ai/site` (public): the docs' “Edit page” links point there.
+- Push `CONTRIBUTING.md` to `deskmind-ai/.github`; the contributing page links to it.
+- Make the ModelScope repos `gxcsoccer/brain-{0.8b,4b}` public; the quickstart and troubleshooting pages use them.
 
 ## Licence
 
-Text: CC BY 4.0. Code: Apache-2.0. The DeskMind and 得心 names, the logo and Xiaofang are covered by
+Text (homepage copy and docs): CC BY 4.0, see [LICENSE-docs](LICENSE-docs). Code: Apache-2.0, see [LICENSE](LICENSE). The DeskMind and 得心 names, the logo and Xiaofang are covered by
 [BRAND.md](https://github.com/deskmind-ai/deskmind/blob/main/BRAND.md), not by these licences.
