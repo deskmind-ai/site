@@ -201,8 +201,8 @@ code.inline { font-family: var(--font-mono); font-size: 0.9em; }
       <p class="eyebrow"><span class="en">Open source · Local · macOS</span><span class="zh">开源 · 本地 · macOS</span></p>
       <h1 style="margin-top:14px">得心，应手<span class="dot">。</span></h1>
       <p class="lede">
-        <span class="en">Small open models that see your screen, decide the next step and act on your own Mac. Your screen stays on your machine.</span>
-        <span class="zh">一组开源小模型：看清你的屏幕，想好下一步，在你自己的 Mac 上动手。屏幕内容默认不出本机。</span>
+        <span class="en">Small open models that see your screen, decide the next step and act on your own Mac. Inference runs locally by default; an enabled remote tier receives what is sent to it, and networked apps may transmit data.</span>
+        <span class="zh">一组开源小模型：看清你的屏幕，想好下一步，在你自己的 Mac 上动手。默认在本机推理；启用远程升级层时，发给该层的请求会离开本机，联网应用本身也可能传输数据。</span>
       </p>
       <p class="sub">
         <span class="en">Each step is a typed question answered with probabilities, so a low-confidence step asks, escalates or waits instead of guessing.</span>
@@ -228,8 +228,8 @@ code.inline { font-family: var(--font-mono); font-size: 0.9em; }
         <div class="bar" role="listitem"><span>SCROLL</span><span class="track"><span class="fill" style="width:1%"></span></span><span class="p">0.004</span></div>
       </div>
       <figcaption class="foot" id="decision-cap">
-        <span class="en">The step from <code class="inline">examples/request.json</code> in the brain repo: the model clicks “新建文件夹” (New Folder) first. Release G18b: the 0.8B was at 0.956, below the 0.96 threshold, so the 4B answered. Probabilities are read from answer logits; nothing is generated.</span>
-        <span class="zh">brain 仓库 <code class="inline">examples/request.json</code> 里的这一步：模型先点「新建文件夹」。发布版 G18b：0.8B 的把握为 0.956，低于门槛 0.96，所以由 4B 作答。概率直接读自答案 logits，不生成文本。</span>
+        <span class="en">The step from <code class="inline">examples/request.json</code> in the brain repo: the model clicks “新建文件夹” (New Folder) first. Release G18b: the 0.8B was at 0.956, below the 0.96 threshold, so the 4B answered. Probabilities are read from answer logits; nothing is generated. A probability is the model's own weighting of the options, not a guarantee that the step is correct.</span>
+        <span class="zh">brain 仓库 <code class="inline">examples/request.json</code> 里的这一步：模型先点「新建文件夹」。发布版 G18b：0.8B 的把握为 0.956，低于门槛 0.96，所以由 4B 作答。概率直接读自答案 logits，不生成文本。概率是模型对各选项的权衡，不保证这一步一定正确。</span>
       </figcaption>
     </figure>
   </div>
@@ -278,7 +278,7 @@ code.inline { font-family: var(--font-mono); font-size: 0.9em; }
         <article class="role">
           <span class="name" style="font-family:var(--font-mono);font-size:1rem;line-height:30px">bench</span>
           <p class="name"><span class="en">Measure</span><span class="zh">测清楚</span></p>
-          <p><span class="en">Sandbox desktop tasks and graders, with reference runs, so every number here can be reproduced.</span><span class="zh">沙箱桌面任务和评分器，附参考运行记录，这里的每个数字都能复现。</span></p>
+          <p><span class="en">Sandbox desktop tasks and graders, with reference runs: protocols and reference results are provided for reproduction.</span><span class="zh">沙箱桌面任务和评分器，附参考运行记录：提供协议与参考结果，供复现使用。</span></p>
           <p class="links"><a href="https://github.com/deskmind-ai/bench">deskmind-ai/bench</a></p>
         </article>
       </div>
@@ -396,7 +396,7 @@ curl -s localhost:8793/v1/systemone -H 'Content-Type: application/json' \
       <a href="https://huggingface.co/deskmind">Hugging Face</a>
       <a href="https://github.com/deskmind-ai/deskmind/blob/main/BRAND.md"><span class="en">Brand</span><span class="zh">品牌</span></a>
     </p>
-    <p><span class="en">Code and model weights: Apache-2.0. Documentation: CC BY 4.0. The DeskMind and 得心 names, the logo and Xiaofang are not covered by these licences; see the brand guide.</span><span class="zh">代码和模型权重：Apache-2.0。文档：CC BY 4.0。DeskMind、得心的名称、logo 和小方不在上述许可范围内，见品牌规范。</span></p>
+    <p><span class="en">Code: see each component's LICENSE and NOTICE. Model weights, base models and datasets follow their own terms. Documentation: CC BY 4.0. The DeskMind and 得心 names, the logo and Xiaofang are not covered by these licences; see the brand guide.</span><span class="zh">代码：见各组件的 LICENSE 与 NOTICE。模型权重、基座模型和数据集遵循各自的条款。文档：CC BY 4.0。DeskMind、得心的名称、logo 和小方不在上述许可范围内，见品牌规范。</span></p>
     <p><span class="en">Jev and JevBench are named only to describe API compatibility and benchmark results; DeskMind is not affiliated with TypeSafe.</span><span class="zh">提到 Jev 和 JevBench 仅用于说明接口兼容和测试成绩；DeskMind 与 TypeSafe 无关联。</span></p>
   </div>
 </footer>
