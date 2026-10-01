@@ -1,0 +1,26 @@
+# DeskMind
+
+> DeskMind (DeskMind 得心) is open-source computer use for macOS. Small local models see the screen (Eyes), decide each step as a multiple-choice question with a probability for every option (Brain, served over the `/v1/systemone` API), and act on the desktop (Hands). A Mac app packages the loop; Bench measures it on a real desktop. When a task could mean two things, it asks instead of guessing.
+
+- Release: Brain G18b, a 0.8B → 4B router (threshold 0.96) running locally with MLX on Apple Silicon. Real-desktop bench v25: 39/39 runs, no false "done" (13 tasks × 3, one M4 Pro). Decision time about 0.5 s (0.8B) / 3.6 s (4B).
+- Licences: code Apache-2.0; docs CC BY 4.0; model weights, base models and datasets follow their own terms.
+
+## Start
+- [What is DeskMind](https://deskmind.dev/docs/start/what-is-deskmind/)
+- [Install the Mac app](https://deskmind.dev/docs/start/install-the-app/)
+- [Quickstart: run Brain on your Mac](https://deskmind.dev/docs/start/quickstart/)
+
+## Reference and explanation
+- [POST /v1/systemone API](https://deskmind.dev/docs/reference/systemone-api/)
+- [Architecture](https://deskmind.dev/docs/explanation/architecture/)
+- [System One: choices, not guesses](https://deskmind.dev/docs/explanation/system-one/)
+- [Results and limits](https://deskmind.dev/docs/explanation/results-and-limits/)
+- [Troubleshooting](https://deskmind.dev/docs/how-to/troubleshooting/)
+
+## Code and models
+- [GitHub organisation](https://github.com/deskmind-ai)
+- [Mac app releases](https://github.com/deskmind-ai/app/releases/latest)
+- [Models on Hugging Face](https://huggingface.co/deskmind) (mirrored on ModelScope: gxcsoccer/brain-0.8b, brain-4b, eyes-4b)
+
+## 中文
+- [中文首页](https://deskmind.dev/zh/) · [中文文档](https://deskmind.dev/zh/docs/)

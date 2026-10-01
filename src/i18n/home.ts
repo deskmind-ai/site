@@ -5,9 +5,9 @@ export const APP_DOWNLOAD = 'https://github.com/deskmind-ai/app/releases/latest'
 
 const en = {
   lang: 'en',
-  title: 'DeskMind 得心 · Small enough to run on your Mac. Smart enough to ask.',
+  title: 'DeskMind: open-source AI computer use for your Mac',
   description:
-    'Open-source computer use for your Mac. A small model decides each step locally, and asks when a task could mean two things.',
+    'DeskMind is an open-source AI agent that operates your Mac: small local models (MLX) see the screen, decide each step with a probability for every option, and ask when a task is ambiguous. Free Mac app, models and code.',
   docs: '/docs/',
   quickstart: '/docs/start/quickstart/',
   other: { href: '/zh/', label: '中文' },
@@ -131,8 +131,8 @@ export type HomeCopy = typeof en;
 
 const zh: HomeCopy = {
   lang: 'zh-CN',
-  title: 'DeskMind 得心 · 小到能在你的 Mac 上跑，聪明到知道该问你',
-  description: '全栈开源的电脑操作 AI。小模型在你的 Mac 上决定每一步，任务有两种理解时先问你。',
+  title: 'DeskMind：在你的 Mac 上替你操作电脑的开源 AI',
+  description: 'DeskMind 是全栈开源的电脑操作 AI（computer use）：本地小模型在你的 Mac 上看屏幕、决定每一步、给出每个选项的概率，任务有歧义时先问你。Mac App、模型和代码免费。',
   docs: '/zh/docs/',
   quickstart: '/zh/docs/start/quickstart/',
   other: { href: '/', label: 'English' },
