@@ -1,7 +1,16 @@
-// Cloudflare Workers static assets: serves dist/ (built by `npm run build`). Deploy with `npx wrangler deploy`.
+// Cloudflare Worker for deskmind.dev: static assets from dist/ (built by `npm run build`), plus the event endpoint
+// POST /e (worker/index.js) that writes anonymous events to Workers Analytics Engine. Deploy with `npx wrangler deploy`.
 {
   "name": "deskmind-site",
+  "main": "worker/index.js",
   "compatibility_date": "2026-10-01",
-  "assets": { "directory": "./dist", "not_found_handling": "404-page", "html_handling": "auto-trailing-slash" },
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS",
+    "not_found_handling": "404-page",
+    "html_handling": "auto-trailing-slash",
+    "run_worker_first": ["/e"]
+  },
+  "analytics_engine_datasets": [{ "binding": "EVENTS", "dataset": "deskmind_site_events" }],
   "routes": [{ "pattern": "deskmind.dev", "custom_domain": true }, { "pattern": "www.deskmind.dev", "custom_domain": true }]
 }

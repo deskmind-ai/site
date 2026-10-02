@@ -24,6 +24,7 @@ export default defineConfig({
         { tag: 'meta', attrs: { name: 'twitter:image', content: 'https://deskmind.dev/assets/og-1280x640.png' } },
         { tag: 'meta', attrs: { name: 'theme-color', content: '#F4F1EA' } },
         // Cloudflare Web Analytics: cookieless page views, no personal data.
+        { tag: 'script', attrs: { src: '/t.js', defer: true } },
         { tag: 'script', attrs: { type: 'module', src: 'https://static.cloudflareinsights.com/beacon.min.js', 'data-cf-beacon': '{"token": "5e52e4679d4346d7989c697163f84f33"}' } },
       ],
       sidebar: [

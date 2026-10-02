@@ -33,6 +33,20 @@ In mainland China, add `--registry=https://registry.npmmirror.com` to `npm insta
   order.
 - **Demo video:** `public/video/demo-{en,zh}.mp4` (1280 px, H.264, faststart), loaded only when the visitor presses play.
 
+## Analytics
+
+Two cookieless sources, no personal data:
+- **Cloudflare Web Analytics** (beacon in the page head): visits, page views, referrers, countries.
+- **Own events** (`public/t.js` → `POST /e` → `worker/index.js` → Workers Analytics Engine dataset
+  `deskmind_site_events`): page views, clicks on download / GitHub / Hugging Face / ModelScope / docs, video play and
+  progress, FAQ opens, code copies, scroll depth, time on page. Each event carries the page, the button's section, the
+  `?ref=` or `utm_source` tag, the referrer host, the country (from Cloudflare), language and a desktop/phone flag. A
+  random id in `sessionStorage` links events within one tab's visit; there are no cookies and no IP addresses, and
+  browsers with Do Not Track send nothing.
+
+Tag links you post with `?ref=<channel>` (for example `?ref=hn`, `?ref=xhs`) to see conversion per channel. Open the site
+with `?ref=internal` for your own tests; those visits are left out of the reports.
+
 ## Deploy
 
 Cloudflare Workers with static assets (`wrangler.jsonc`), since the deskmind.dev DNS is on Cloudflare:
