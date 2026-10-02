@@ -92,7 +92,7 @@ const ld = [
   </div>
   <figure class="demo">
     <div class="demo-frame" data-demo data-full={t.hero.video}>
-      <video class="loop" muted loop playsinline preload="none" width="1280" height="720"
+      <video class="vloop" muted loop playsinline preload="none" width="1280" height="720"
         poster={`/video/hook-${lang}.jpg`} data-src={`/video/hook-${lang}.mp4`} aria-label={t.hero.posterAlt}></video>
       <button type="button" class="play" aria-label={t.hero.playLabel}>
         <svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><circle cx="11" cy="11" r="10" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M9 7.2V14.8L15 11Z" fill="currentColor"/></svg>
@@ -168,7 +168,7 @@ const ld = [
     {t.cases.items.map((c) => (
       <article class="case">
         <div class="clip">
-          <video class="loop" muted loop playsinline preload="none" width="960" height="522" data-start={c.start}
+          <video class="vloop" muted loop playsinline preload="none" width="960" height="522" data-start={c.start}
             poster={`/video/case-${c.clip}-${lang}.jpg`} data-src={`/video/case-${c.clip}-${lang}.mp4`} aria-label={c.alt}></video>
           <span class="badge">{t.cases.badge}</span>
           <button type="button" class="watch" data-start={c.start}>{t.cases.watch}</button>
@@ -257,7 +257,7 @@ const ld = [
   // Muted loops (hero hook, case clips) load only near the viewport and play only while visible; no autoplay with
   // reduced motion or Save-Data. The hero button switches to the full video with sound and controls.
   const calm = matchMedia('(prefers-reduced-motion: reduce)').matches || (navigator as any).connection?.saveData === true;
-  const loops = Array.from(document.querySelectorAll<HTMLVideoElement>('video.loop'));
+  const loops = Array.from(document.querySelectorAll<HTMLVideoElement>('video.vloop'));
   const load = (v: HTMLVideoElement) => { if (!v.src && v.dataset.src) { v.src = v.dataset.src; } };
   if ('IntersectionObserver' in window) {
     const io = new IntersectionObserver((entries) => {
@@ -271,7 +271,7 @@ const ld = [
   }
   const frame = document.querySelector<HTMLElement>('[data-demo]');
   if (frame) {
-    const hook = frame.querySelector<HTMLVideoElement>('video.loop')!;
+    const hook = frame.querySelector<HTMLVideoElement>('video.vloop')!;
     const pause = frame.querySelector<HTMLButtonElement>('.pause')!;
     const sync = () => pause.setAttribute('aria-pressed', String(hook.paused));
     hook.addEventListener('play', sync); hook.addEventListener('pause', sync);
@@ -386,7 +386,7 @@ const ld = [
   .ac-s { stroke: var(--accent); }
 
   .cases { grid-template-columns: minmax(0, 1fr); gap: 28px; }
-  .case { background: var(--paper-2); border-radius: 16px; overflow: hidden; display: grid; grid-template-columns: minmax(0, 1.65fr) minmax(0, 1fr); align-items: center; }
+  .case { background: var(--paper-2); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; display: grid; grid-template-columns: minmax(0, 1.65fr) minmax(0, 1fr); align-items: center; }
   .case:nth-child(even) { grid-template-columns: minmax(0, 1fr) minmax(0, 1.65fr); }
   .case:nth-child(even) .clip { order: 2; }
   .case .clip { border-bottom: 0; }
