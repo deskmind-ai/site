@@ -60,7 +60,14 @@ JevBench v1.4.2 公开仓库里的 231 道题（即榜单的 `public_accuracy` �
 
 ## 视觉定位（Eyes）
 
-ScreenSpot-Pro 全集（1,581 题），单次推理，在 GPU 上：Eyes-4B **67.7%**，基座模型为 64.8%。App 里运行的是 4 位 MLX 版本，图片最大 200 万像素，这不是测评时的设置，目前还没有这个设置下的分数。详见 [eyes/README](https://github.com/deskmind-ai/eyes#results-september-2026)。
+ScreenSpot-Pro 全集（1,581 题），单次推理。两种设置分开测：
+
+| 设置 | 总体 | 文字目标 | 图标目标 |
+|---|---|---|---|
+| GPU，bf16，原始分辨率 | **67.7%**（基座模型 64.8%） | — | — |
+| Mac App 里的实际设置：4 位 MLX，图片缩到最多 200 万像素，M4 Pro | **50.9%** | 64.8% | 28.3% |
+
+App 设置下掉分主要在小图标：ScreenSpot-Pro 的截图大多是 4K 级别，缩到 200 万像素后小图标约缩小到四分之一。在 Mac 上一次定位约 4.7 秒（中位数）、7.8 秒（最慢 5%），测时机器上同时有其他任务，所以这是偏高的上限；内存峰值约 4.5 GB。详见 [eyes/README](https://github.com/deskmind-ai/eyes#results-september-2026)。
 
 ## 还有哪些难点
 

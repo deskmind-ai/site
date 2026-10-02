@@ -80,9 +80,17 @@ maintainers.
 
 ## Visual grounding (Eyes)
 
-ScreenSpot-Pro, full set (1,581 items), one pass, on a GPU: Eyes-4B **67.7%**, against 64.8% for its base model.
-The app runs a 4-bit MLX conversion at up to 2 megapixels, which is not the benchmarked setting; we have no benchmark
-number for it yet. Details: [eyes/README](https://github.com/deskmind-ai/eyes#results-september-2026).
+ScreenSpot-Pro, full set (1,581 items), one pass. Two settings, measured separately:
+
+| Setting | Overall | Text targets | Icon targets |
+|---|---|---|---|
+| GPU, bf16, native resolution | **67.7%** (base model 64.8%) | — | — |
+| As the Mac app runs it: 4-bit MLX, images scaled to at most 2 megapixels, M4 Pro | **50.9%** | 64.8% | 28.3% |
+
+The app setting loses most on small icons: ScreenSpot-Pro screenshots are mostly 4K-class, and scaling them to
+2 megapixels shrinks small icons about fourfold. On the Mac a grounding query takes about 4.7 s (median) and 7.8 s
+(slowest 5%), measured while other jobs shared the machine, so treat these as upper bounds; peak memory is about 4.5 GB.
+Details: [eyes/README](https://github.com/deskmind-ai/eyes#results-september-2026).
 
 ## What is still hard
 
