@@ -9,6 +9,7 @@ interface Props { t: HomeCopy }
 const { t } = Astro.props;
 const GH = 'https://github.com/deskmind-ai';
 const frame = 'M12 30V12H52V34 M12 36V52H33';
+const lang = t.lang === 'en' ? 'en' : 'zh';
 const canonical = t.lang === 'en' ? 'https://deskmind.dev/' : 'https://deskmind.dev/zh/';
 const ld = [
   {
@@ -90,11 +91,15 @@ const ld = [
     <div class="meta">{t.hero.meta}</div>
   </div>
   <figure class="demo">
-    <div class="demo-frame" data-demo>
-      <img src="/assets/shots/ask.jpg" alt={t.hero.posterAlt} width="1200" height="550">
-      <button type="button" class="play" aria-label={t.hero.playLabel} data-src={t.hero.video}>
-        <svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><circle cx="11" cy="11" r="10" fill="none" stroke="#262B28" stroke-width="1.5"/><path d="M9 7.2V14.8L15 11Z" fill="#262B28"/></svg>
+    <div class="demo-frame" data-demo data-full={t.hero.video}>
+      <video class="loop" muted loop playsinline preload="none" width="1280" height="720"
+        poster={`/video/hook-${lang}.jpg`} data-src={`/video/hook-${lang}.mp4`} aria-label={t.hero.posterAlt}></video>
+      <button type="button" class="play" aria-label={t.hero.playLabel}>
+        <svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><circle cx="11" cy="11" r="10" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M9 7.2V14.8L15 11Z" fill="currentColor"/></svg>
         {t.hero.play}
+      </button>
+      <button type="button" class="pause" aria-label={t.hero.pauseLabel} aria-pressed="false">
+        <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path class="i-pause" d="M3 2h3v10H3zM8 2h3v10H8z" fill="currentColor"/><path class="i-play" d="M3 1.5v11L12 7z" fill="currentColor"/></svg>
       </button>
     </div>
     <figcaption>{t.hero.caption}</figcaption>
@@ -162,7 +167,12 @@ const ld = [
   <div class="grid cases">
     {t.cases.items.map((c) => (
       <article class="case">
-        <img src={c.img} alt={c.alt} width="1200" height="550" loading="lazy">
+        <div class="clip">
+          <video class="loop" muted loop playsinline preload="none" width="960" height="522" data-start={c.start}
+            poster={`/video/case-${c.clip}-${lang}.jpg`} data-src={`/video/case-${c.clip}-${lang}.mp4`} aria-label={c.alt}></video>
+          <span class="badge">{t.cases.badge}</span>
+          <button type="button" class="watch" data-start={c.start}>{t.cases.watch}</button>
+        </div>
         <div class="case-body">
           <h3>{c.title}</h3>
           <p class="goal">{c.goal}</p>
@@ -244,19 +254,52 @@ const ld = [
 </footer>
 
 <script>
-  // Swap the poster for the video on click, so the page loads no video until asked.
-  for (const btn of document.querySelectorAll<HTMLButtonElement>('[data-demo] .play')) {
-    btn.addEventListener('click', () => {
-      const frame = btn.closest('[data-demo]')!;
-      const v = document.createElement('video');
-      v.src = btn.dataset.src!;
-      v.controls = true;
-      v.autoplay = true;
-      v.playsInline = true;
-      v.setAttribute('aria-label', btn.getAttribute('aria-label') || '');
-      frame.replaceChildren(v);
-      v.focus();
+  // Muted loops (hero hook, case clips) load only near the viewport and play only while visible; no autoplay with
+  // reduced motion or Save-Data. The hero button switches to the full video with sound and controls.
+  const calm = matchMedia('(prefers-reduced-motion: reduce)').matches || (navigator as any).connection?.saveData === true;
+  const loops = Array.from(document.querySelectorAll<HTMLVideoElement>('video.loop'));
+  const load = (v: HTMLVideoElement) => { if (!v.src && v.dataset.src) { v.src = v.dataset.src; } };
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      for (const e of entries) {
+        const v = e.target as HTMLVideoElement;
+        if (e.isIntersecting) { if (!calm && v.dataset.paused !== '1') { load(v); v.play().catch(() => {}); } }
+        else if (!v.paused) v.pause();
+      }
+    }, { rootMargin: '200px 0px', threshold: 0.25 });
+    loops.forEach((v) => io.observe(v));
+  }
+  const frame = document.querySelector<HTMLElement>('[data-demo]');
+  if (frame) {
+    const hook = frame.querySelector<HTMLVideoElement>('video.loop')!;
+    const pause = frame.querySelector<HTMLButtonElement>('.pause')!;
+    const sync = () => pause.setAttribute('aria-pressed', String(hook.paused));
+    hook.addEventListener('play', sync); hook.addEventListener('pause', sync);
+    pause.addEventListener('click', () => {
+      load(hook);
+      if (hook.paused) { hook.dataset.paused = ''; hook.play().catch(() => {}); } else { hook.dataset.paused = '1'; hook.pause(); }
     });
+    const label = frame.querySelector<HTMLButtonElement>('.play')!.getAttribute('aria-label') || '';
+    // Play the full video with sound in the hero, from `start` seconds (a case card jumps to its own segment).
+    const playFull = (start: number) => {
+      let v = frame.querySelector<HTMLVideoElement>('video.full');
+      if (!v) {
+        v = document.createElement('video');
+        v.className = 'full'; v.src = frame.dataset.full!; v.controls = true; v.playsInline = true;
+        v.width = 1280; v.height = 720; v.poster = hook.poster; v.setAttribute('aria-label', label);
+        frame.replaceChildren(v);
+      }
+      const go = () => { v!.currentTime = start; v!.play().catch(() => {}); };
+      if (v.readyState >= 1) go(); else v.addEventListener('loadedmetadata', go, { once: true });
+      v.focus({ preventScroll: true });
+    };
+    frame.querySelector<HTMLButtonElement>('.play')!.addEventListener('click', () => playFull(0));
+    for (const el of document.querySelectorAll<HTMLElement>('#cases [data-start]')) {
+      el.addEventListener('click', () => {
+        frame.scrollIntoView({ behavior: calm ? 'auto' : 'smooth', block: 'center' });
+        playFull(Number(el.dataset.start) || 0);
+      });
+    }
   }
 </script>
 
@@ -312,7 +355,12 @@ const ld = [
   .lead { font-size: 19px; color: var(--ink-2); max-width: 520px; }
   .demo { margin: 0; display: flex; flex-direction: column; gap: 14px; }
   .demo-frame { position: relative; border-radius: 16px; overflow: hidden; background: var(--paper-2); box-shadow: 0 1px 2px rgba(38,43,40,0.06), 0 12px 32px rgba(38,43,40,0.08); }
-  .demo-frame img, .demo-frame :global(video) { width: 100%; height: auto; display: block; }
+  .demo-frame video, .demo-frame :global(video) { width: 100%; height: auto; aspect-ratio: 16 / 9; display: block; background: var(--paper-2); }
+  .pause { position: absolute; right: 16px; bottom: 24px; width: 36px; height: 36px; display: grid; place-items: center; border: 0; border-radius: 999px; background: rgba(251,250,246,0.94); color: var(--ink); cursor: pointer; }
+  .pause .i-play { display: none; }
+  .pause[aria-pressed='true'] .i-play { display: inline; }
+  .pause[aria-pressed='true'] .i-pause { display: none; }
+  .play:focus-visible, .pause:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
   .play { position: absolute; left: 24px; bottom: 24px; display: flex; align-items: center; gap: 10px; padding: 10px 16px 10px 12px; border: 0; border-radius: 999px; background: rgba(251,250,246,0.94); font: inherit; font-size: 14px; font-weight: 500; color: var(--ink); cursor: pointer; }
   .play:hover { background: #fff; }
   figcaption { font-size: 13px; color: var(--ink-3); }
@@ -339,7 +387,12 @@ const ld = [
 
   .cases { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
   .case { background: var(--paper-2); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; }
-  .case img { width: 100%; height: auto; display: block; border-bottom: 1px solid var(--line); }
+  .clip { position: relative; border-bottom: 1px solid var(--line); background: var(--paper); }
+  .clip video { width: 100%; height: auto; aspect-ratio: 1840 / 1000; display: block; cursor: pointer; object-fit: cover; }
+  .watch { position: absolute; right: 12px; bottom: 12px; font: inherit; font-size: 13px; font-weight: 500; padding: 6px 12px; border: 0; border-radius: 999px; background: var(--ink); color: var(--paper); cursor: pointer; }
+  .watch:hover { background: #000; }
+  .watch:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .badge { position: absolute; left: 12px; top: 12px; font-size: 12px; padding: 3px 9px; border-radius: 999px; background: rgba(251,250,246,0.92); color: var(--ink-2); pointer-events: none; }
   .case-body { padding: 28px; display: flex; flex-direction: column; gap: 12px; }
   .case h3 { font-size: 20px; }
   .goal { font-size: 14px; color: var(--ink-3); }

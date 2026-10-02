@@ -31,7 +31,11 @@ In mainland China, add `--registry=https://registry.npmmirror.com` to `npm insta
 - **Docs:** each English page under `src/content/docs/docs/` has a Chinese twin at the same path under
   `src/content/docs/zh/docs/`. The sidebar is generated from the folders; `sidebar.order` in the frontmatter sets the
   order.
-- **Demo video:** `public/video/demo-{en,zh}.mp4` (1280 px, H.264, faststart), loaded only when the visitor presses play.
+- **Videos:** `public/video/` holds the hero loop (`hook-*.mp4`, muted), the full demo with sound (`demo-*.mp4`), three case
+  clips (`case-{ask,live,copy}-*.mp4`) and their posters. They are exported from the launch video with
+  `private/video/tools/web_export.sh <version> <site>/public/video` in the private repo; case cards jump the hero player
+  to the segment start set in `src/i18n/home.ts` (`start`). Loops load near the viewport, play only while visible, and
+  never autoplay with reduced motion or Save-Data.
 
 ## Analytics
 
