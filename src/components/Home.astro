@@ -385,17 +385,20 @@ const ld = [
   .ac-f { fill: var(--accent); }
   .ac-s { stroke: var(--accent); }
 
-  .cases { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
-  .case { background: var(--paper-2); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; }
+  .cases { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+  .case { background: var(--paper-2); border-radius: 16px; overflow: hidden; display: grid; grid-template-columns: minmax(0, 1.65fr) minmax(0, 1fr); align-items: center; }
+  .case:nth-child(even) { grid-template-columns: minmax(0, 1fr) minmax(0, 1.65fr); }
+  .case:nth-child(even) .clip { order: 2; }
+  .case .clip { border-bottom: 0; }
   .clip { position: relative; border-bottom: 1px solid var(--line); background: var(--paper); }
   .clip video { width: 100%; height: auto; aspect-ratio: 1840 / 1000; display: block; cursor: pointer; object-fit: cover; }
   .watch { position: absolute; right: 12px; bottom: 12px; font: inherit; font-size: 13px; font-weight: 500; padding: 6px 12px; border: 0; border-radius: 999px; background: var(--ink); color: var(--paper); cursor: pointer; }
   .watch:hover { background: #000; }
   .watch:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
   .badge { position: absolute; left: 12px; top: 12px; font-size: 12px; padding: 3px 9px; border-radius: 999px; background: rgba(251,250,246,0.92); color: var(--ink-2); pointer-events: none; }
-  .case-body { padding: 28px; display: flex; flex-direction: column; gap: 12px; }
-  .case h3 { font-size: 20px; }
-  .goal { font-size: 14px; color: var(--ink-3); }
+  .case-body { padding: 32px 36px; display: flex; flex-direction: column; gap: 14px; }
+  .case h3 { font-size: 22px; }
+  .goal { font-size: 15px; color: var(--ink-3); }
   .case-body p:last-child { font-size: 15px; color: var(--ink-2); }
 
   .dark { background: var(--ink); color: var(--paper); }
@@ -432,6 +435,8 @@ const ld = [
   .fnav { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px 40px; }
 
   @media (max-width: 960px) {
+    .case, .case:nth-child(even) { grid-template-columns: minmax(0, 1fr); }
+    .case:nth-child(even) .clip { order: 0; }
     .hero { grid-template-columns: minmax(0, 1fr); }
   }
   @media (max-width: 720px) {
