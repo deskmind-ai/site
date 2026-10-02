@@ -16,7 +16,7 @@ Brain 只提供一个决策接口：你发来一个状态和一组带类型的�
 | `POST` | `/v1/systemone` | 针对一个状态回答一组问题 |
 | `GET` | `/v1/models` | 当前服务的模型名；两级服务时还有路由计数 |
 
-不加 `--host` 和 `--port` 时，服务监听 `127.0.0.1:8787`。`Authorization` 请求头会被忽略。请求逐个处理，不并发。
+不加 `--host` 和 `--port` 时，服务监听 `127.0.0.1:8787`。如果设置了环境变量 `DESKMIND_BRAIN_TOKEN`，每个请求都必须带 `Authorization: Bearer <token>`，否则返回 `401`；Mac App 会为每次安装设置一个。没设置时，`Authorization` 请求头会被忽略。请求逐个处理，不并发。
 
 ## 请求
 

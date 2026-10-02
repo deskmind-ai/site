@@ -29,6 +29,7 @@ export default defineConfig({
       ],
       sidebar: [
         { label: 'Start here', translations: { 'zh-CN': '入门' }, items: [{ autogenerate: { directory: 'docs/start' } }] },
+        { label: 'Tutorials', translations: { 'zh-CN': '教程' }, items: [{ autogenerate: { directory: 'docs/tutorials' } }] },
         { label: 'How-to guides', translations: { 'zh-CN': '操作指南' }, items: [{ autogenerate: { directory: 'docs/how-to' } }] },
         { label: 'Reference', translations: { 'zh-CN': '参考' }, items: [{ autogenerate: { directory: 'docs/reference' } }] },
         { label: 'Explanation', translations: { 'zh-CN': '原理' }, items: [{ autogenerate: { directory: 'docs/explanation' } }] },

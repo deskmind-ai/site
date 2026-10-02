@@ -86,7 +86,7 @@ const ld = [
     <p class="lead">{t.hero.lead}</p>
     <div class="row">
       <a href="#download" class="btn btn-dark">{t.nav.download}</a>
-      <a href={GH} class="btn btn-line">{t.hero.github}</a>
+      <a href={t.hero.githubHref} class="btn btn-line">{t.hero.github}</a>
     </div>
     <div class="meta">{t.hero.meta}</div>
   </div>
@@ -241,6 +241,7 @@ const ld = [
   <div class="stack-s licence">
     <img src="/assets/bilingual-horizontal-light.svg" alt="DeskMind 得心" width="120" height="24">
     <span>{t.footer.licence}</span>
+    <span class="fine">{t.footer.privacy}</span>
   </div>
   <nav aria-label={t.footerLabel} class="fnav">
     <a href={t.docs}>{t.footer.docs}</a>
@@ -431,6 +432,7 @@ const ld = [
 
   .foot { padding-top: 48px; padding-bottom: 64px; display: flex; justify-content: space-between; gap: 32px; flex-wrap: wrap; font-size: 14px; color: var(--ink-3); }
   .licence { max-width: 420px; }
+  .fine { font-size: 12px; }
   .licence img { height: 24px; width: auto; }
   .fnav { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px 40px; }
 

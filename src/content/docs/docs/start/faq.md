@@ -25,7 +25,7 @@ supported by the app.
 
 ## How big is the download?
 
-The app is a small DMG. On first run it downloads the decision models once, about 5.3 GB (0.8B + 4B), and checks every
+The app is a DMG of about 380 MB. On first run it downloads the decision models once, about 5.3 GB (0.8B + 4B), and checks every
 file against a SHA-256 hash. The optional vision model adds about 3.3 GB. If Hugging Face is slow or blocked, the app
 switches to the same files on ModelScope by itself; this is the usual path in mainland China.
 
@@ -58,8 +58,10 @@ seconds. See [Results and limits](/docs/explanation/results-and-limits/).
 
 ## How fast is it?
 
-When the 0.8B answers a step itself, a decision takes about 0.5 s; when the step goes to the 4B, about 3.6 s (about
-70% of steps go to the 4B). These are times per decision, not per task.
+Across all steps on our real-desktop bench, a decision takes 2.85 s at the median and 9.8 s for the slowest 5%. When
+the 0.8B answers a step itself it takes about 0.5 s; when the step goes to the 4B, about 3.6 s, and in this release
+about 70% of steps go to the 4B. These are times per decision, not per task. Keeping more steps on the fast path is
+the main goal of the next release.
 
 ## Why does it ask me questions?
 
@@ -89,3 +91,9 @@ results are in the [bench repository](https://github.com/deskmind-ai/bench), so 
 Try it and report what breaks, especially on the first run. Good first issues are labelled in each repository, and
 new Bench tasks are welcome. Questions go to [Discussions](https://github.com/deskmind-ai/deskmind/discussions). See
 [Contributing](/docs/project/contributing/).
+
+## Does this website track me?
+
+It counts visits and clicks (for example, which button people use to download) without cookies and without
+personal data: Cloudflare Web Analytics plus our own anonymous events. A random id in your browser tab links the
+events of one visit. Browsers that send Do Not Track send nothing.

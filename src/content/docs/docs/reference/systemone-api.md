@@ -19,7 +19,9 @@ URL.
 | `POST` | `/v1/systemone` | answer a set of questions about one state |
 | `GET` | `/v1/models` | the served model's name, and routing counts when two tiers are served |
 
-The server listens on `127.0.0.1:8787` unless you pass `--host` and `--port`. The `Authorization` header is ignored.
+The server listens on `127.0.0.1:8787` unless you pass `--host` and `--port`. If the environment variable
+`DESKMIND_BRAIN_TOKEN` is set, every request must send `Authorization: Bearer <token>` (otherwise `401`); the Mac app
+sets one per install. Without it, the `Authorization` header is ignored.
 Requests are answered one at a time.
 
 ## Request
