@@ -81,7 +81,7 @@ const ld = [
 <main>
 <section id="top" class="wrap hero">
   <div class="stack">
-    <div class="eyebrow">{t.hero.eyebrow}</div>
+    <a href={t.post.href} class="pill"><span class="dot" aria-hidden="true"></span>{t.post.pill}<span aria-hidden="true">→</span></a>
     <h1>{t.hero.title[0]}{t.lang !== 'en' && <br>}{t.hero.title[1]}<span class="accent">{t.lang === 'en' ? '.' : '。'}</span></h1>
     <p class="lead">{t.hero.lead}</p>
     <div class="row">
@@ -203,6 +203,7 @@ const ld = [
         <div class="strong">{t.results.howTitle}</div>
         <p class="dim">{t.results.how}</p>
         <a href={`${GH}/bench`} class="under">{t.results.more}</a>
+        <a href={t.post.href} class="under">{t.post.results}</a>
       </div>
     </div>
   </div>
@@ -246,6 +247,7 @@ const ld = [
   <nav aria-label={t.footerLabel} class="fnav">
     <a href={t.docs}>{t.footer.docs}</a>
     <a href={t.faq.href}>{t.footer.faq}</a>
+    <a href={t.post.href}>{t.post.footer}</a>
     <a href={GH}>GitHub</a>
     <a href="https://huggingface.co/deskmind">Hugging Face</a>
     <a href={`${GH}/deskmind/discussions`}>{t.footer.discussions}</a>
@@ -351,6 +353,9 @@ const ld = [
 
   .hero { padding-top: 72px; padding-bottom: 96px; display: grid; grid-template-columns: 1.1fr 1fr; gap: 64px; align-items: center; }
   .eyebrow { font-size: 14px; letter-spacing: 0.02em; color: var(--ink-3); }
+  .pill { display: inline-flex; align-items: center; gap: 8px; align-self: flex-start; padding: 6px 14px 6px 10px; border: 1px solid var(--line); border-radius: 999px; background: var(--paper-2); font-size: 14px; color: var(--ink-2); }
+  .pill:hover { border-color: var(--accent); color: var(--ink); }
+  .pill .dot { width: 8px; height: 8px; border-radius: 99px; background: var(--accent); }
   h1 { font-size: 60px; line-height: 1.08; letter-spacing: -0.02em; }
   :global(html[lang='zh-CN']) h1 { font-size: 46px; line-height: 1.25; letter-spacing: 0; }
   .lead { font-size: 19px; color: var(--ink-2); max-width: 520px; }

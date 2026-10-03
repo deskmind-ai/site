@@ -30,6 +30,7 @@
         if (k) send('click_' + k, { w: where(a), l: a.href.replace(/^https?:\/\//, '') });
         else if (a.host && a.host !== location.host) send('click_out', { w: where(a), l: a.host });
         else if (/\/docs\//.test(a.pathname) && !/\/docs\//.test(location.pathname)) send('click_docs', { w: where(a), l: a.pathname });
+        else if (/\/blog\//.test(a.pathname) && !/\/blog\//.test(location.pathname)) send('click_blog', { w: where(a), l: a.pathname });
         return;
       }
       const b = t.closest('button');
