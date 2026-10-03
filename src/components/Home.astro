@@ -68,10 +68,8 @@ const ld = [
 <header class="wrap top">
   <a href={t.lang === 'en' ? '/' : '/zh/'} aria-label={t.homeLabel} class="logo"><img src="/assets/bilingual-horizontal-light.svg" alt="DeskMind 得心" width="150" height="30"></a>
   <nav aria-label={t.navLabel} class="nav">
-    <a href="#how">{t.nav.how}</a>
-    <a href="#cases">{t.nav.cases}</a>
-    <a href="#results">{t.nav.results}</a>
     <a href={t.docs}>{t.nav.docs}</a>
+    <a href={t.post.href}>{t.post.footer}</a>
     <a href={GH}>GitHub</a>
     <a href={t.other.href} hreflang={t.lang === 'en' ? 'zh-CN' : 'en'}>{t.other.label}</a>
     <a href="#download" class="btn btn-dark btn-sm">{t.nav.download}</a>
