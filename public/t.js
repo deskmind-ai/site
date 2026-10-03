@@ -20,7 +20,7 @@
     send('pv');
 
     const where = (el) => { const s = el.closest('[id]'); if (s) return s.id; const t = el.closest('header,nav,footer,aside,main'); return t ? t.tagName.toLowerCase() : ''; };
-    const kind = (h) => /github\.com\/deskmind-ai\/app\/releases|\.dmg($|\?)/.test(h) ? 'download'
+    const kind = (h) => /github\.com\/deskmind-ai\/(app|deskmind)\/releases|\.dmg($|\?)/.test(h) ? 'download'
       : /github\.com/.test(h) ? 'github' : /huggingface\.co/.test(h) ? 'hf' : /modelscope\.cn/.test(h) ? 'modelscope' : '';
     document.addEventListener('click', (ev) => {
       const t = ev.target; if (!t || !t.closest) return;
