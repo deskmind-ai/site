@@ -90,9 +90,9 @@ The numbers, with their caveats:
 |---|---|---|
 | Real desktop (bench v25) | **39/39 correct results, 0 false "done"** | 13 tasks I wrote × 3 runs, one M4 Pro, through the app; [per-task results](https://github.com/deskmind-ai/bench/blob/main/results/reference.md) |
 | ScreenSpot-Pro (Eyes) | **50.9%** as the app runs it; 67.7% on a GPU at full resolution | Mostly resolution: on the same 300 items, 2 MP scores 49.3% and 4 MP 59.0% |
-| JevBench v1.4.2, public set | **0.835** (193/231), 4B | [Submission](https://github.com/fstandhartinger/jevbench/issues/173); sealed run pending |
+| JevBench v1.4.2, public set | **0.835** (193/231), 4B; Jev 1.13 scores 0.866 on the same items | [Submission](https://github.com/fstandhartinger/jevbench/issues/173); sealed run pending |
 
-39/39 sounds better than it is. It's 13 tasks I wrote, on one machine. In all 3 runs of one task (G04) the model got the file right but never said "done" and used up its 20 steps, which still counts as a pass because the grader checks the result. The bench and [every per-task result](https://github.com/deskmind-ai/bench/blob/main/results/reference.md) are public, so please run it yourself. It still struggles with tables longer than about four rows and with forms filled from a photographed receipt.
+39/39 sounds better than it is. It's 13 tasks I wrote, on one machine. In all 3 runs of one task (G04) the model got the file right but never said "done" and used up its 20 steps, which still counts as a pass because the grader checks the result. The bench and [every per-task result](https://github.com/deskmind-ai/bench/blob/main/results/reference.md) are public, so please run it yourself. The only head-to-head with Jev is on the older v23 bench with my previous model, G14: Jev's hosted API passed 33/38 and mine 35/38, but Jev takes 0.36 s a step and mine 0.59 s. It still struggles with tables longer than about four rows and with forms filled from a photographed receipt.
 
 ## What twenty training rounds taught me
 

@@ -90,9 +90,9 @@ harness 会把每一步拆成几道带类型的题：做什么操作、点哪个
 |---|---|---|
 | 真实桌面（bench v25） | **39/39 结果正确，0 次没做完就说完成** | 自己出的 13 个任务 × 3 次，一台 M4 Pro，经 App；[逐题结果](https://github.com/deskmind-ai/bench/blob/main/results/reference.md) |
 | ScreenSpot-Pro（Eyes） | App 实际设置下 **50.9%**；GPU、原始分辨率下 67.7% | 差距大部分来自分辨率：同样 300 题，200 万像素 49.3%，400 万像素 59.0% |
-| JevBench v1.4.2 公开题 | 4B **0.835**（193/231） | [提交记录](https://github.com/fstandhartinger/jevbench/issues/173)；密封评测还没出分 |
+| JevBench v1.4.2 公开题 | 4B **0.835**（193/231）；同一批题上 Jev 1.13 是 0.866 | [提交记录](https://github.com/fstandhartinger/jevbench/issues/173)；密封评测还没出分 |
 
-39/39 听着比实际好。这是我自己出的 13 个任务，在一台机器上跑的。有一个任务（G04）的 3 次运行，模型都把文件写对了，却一直没说“完成”，把 20 步用光了；评分只看结果，所以还是算过。[评测和逐题结果](https://github.com/deskmind-ai/bench/blob/main/results/reference.md)都公开了，欢迎自己跑一遍。它现在还搞不定超过四五行的表格，也搞不定照着收据照片填报销单。
+39/39 听着比实际好。这是我自己出的 13 个任务，在一台机器上跑的。有一个任务（G04）的 3 次运行，模型都把文件写对了，却一直没说“完成”，把 20 步用光了；评分只看结果，所以还是算过。[评测和逐题结果](https://github.com/deskmind-ai/bench/blob/main/results/reference.md)都公开了，欢迎自己跑一遍。能和 Jev 正面比的只有旧版评测 v23，用的还是上一代模型 G14：Jev 的云端接口 33/38，我的 35/38，但 Jev 每步 0.36 秒，我的 0.59 秒。它现在还搞不定超过四五行的表格，也搞不定照着收据照片填报销单。
 
 ## 二十来轮训练教会我的事
 
