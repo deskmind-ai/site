@@ -8,6 +8,8 @@ date: October 2026
 
 # 3 weeks, 20 training rounds, $600: a local computer use agent that asks first
 
+*I trained a small Jev-style model to drive my Mac, and taught it to ask first*
+
 The demo task is boring on purpose: find Lisa Wong's order in a text file and add it to a spreadsheet.
 
 There are two Lisa Wong orders in the file. Most agents I tried would pick one, write it, and report success. Mine stopped and asked which one I meant.
