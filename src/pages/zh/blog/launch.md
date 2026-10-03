@@ -6,7 +6,7 @@ lang: zh-CN
 date: 2026 年 10 月
 ---
 
-# 三周、二十轮训练、600 美元：<br>我做了一个本地运行的 Computer Use Agent
+# 三周、二十轮训练、600 美元：<br>我做了一个本地运行的 <span class="nw">Computer Use Agent</span>
 
 *我在本地训了一个 Jev 式的决策模型，让它来操作我的 Mac*
 

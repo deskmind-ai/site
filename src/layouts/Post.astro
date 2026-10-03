@@ -6,6 +6,11 @@ import '@fontsource/jetbrains-mono/400.css';
 const { frontmatter } = Astro.props;
 const zh = frontmatter.lang === 'zh-CN';
 const canonical = new URL(Astro.url.pathname, 'https://deskmind.dev').href;
+// The same post in the other language: /blog/x/ <-> /zh/blog/x/.
+const path = Astro.url.pathname;
+const enPath = zh ? path.replace(/^\/zh/, '') : path;
+const zhPath = zh ? path : '/zh' + path;
+const other = zh ? { href: enPath, label: 'English' } : { href: zhPath, label: '中文' };
 ---
 <!doctype html>
 <html lang={frontmatter.lang || 'en'}>
@@ -15,6 +20,8 @@ const canonical = new URL(Astro.url.pathname, 'https://deskmind.dev').href;
 <title>{frontmatter.title} · DeskMind</title>
 <meta name="description" content={frontmatter.description}>
 <link rel="canonical" href={canonical}>
+<link rel="alternate" hreflang="en" href={new URL(enPath, 'https://deskmind.dev').href}>
+<link rel="alternate" hreflang="zh-CN" href={new URL(zhPath, 'https://deskmind.dev').href}>
 <link rel="icon" href="/assets/favicon.ico">
 <meta property="og:type" content="article">
 <meta property="og:title" content={frontmatter.title}>
@@ -29,6 +36,7 @@ const canonical = new URL(Astro.url.pathname, 'https://deskmind.dev').href;
   <nav>
     <a href={zh ? '/zh/docs/' : '/docs/'}>{zh ? '文档' : 'Docs'}</a>
     <a href="https://github.com/deskmind-ai">GitHub</a>
+    <a href={other.href} hreflang={zh ? 'en' : 'zh-CN'} lang={zh ? 'en' : 'zh-CN'}>{other.label}</a>
     <a href="https://github.com/deskmind-ai/app/releases/latest" class="dl">{zh ? '下载 Mac App' : 'Download for Mac'}</a>
   </nav>
 </header>
@@ -61,11 +69,14 @@ const canonical = new URL(Astro.url.pathname, 'https://deskmind.dev').href;
   .post th { font-weight: 500; color: var(--ink-3); font-size: 13px; }
   .post hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
   .date { color: var(--ink-3); font-size: 14px; margin: 0; }
+  html[lang='zh-CN'] .post h1 { font-size: 34px; line-height: 1.35; letter-spacing: 0; }
+  html[lang='zh-CN'] .post em { font-style: normal; color: var(--ink-3); }
+  .nw { white-space: nowrap; }
   .fig { margin: 28px 0; }
   .fig img, .fig video { display: block; width: 100%; height: auto; border-radius: 12px; border: 1px solid var(--line); background: var(--paper-2); }
   .fig figcaption { font-size: 13px; color: var(--ink-3); margin-top: 8px; }
   .foot { max-width: 720px; margin: 0 auto; padding: 0 20px 48px; color: var(--ink-3); font-size: 13px; }
-  @media (max-width: 640px) { .post h1 { font-size: 30px; } .post { font-size: 16px; } }
+  @media (max-width: 640px) { .post h1, html[lang='zh-CN'] .post h1 { font-size: 28px; } .post { font-size: 16px; } }
 </style>
 </body>
 </html>
