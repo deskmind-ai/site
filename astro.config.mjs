@@ -16,7 +16,7 @@ export default defineConfig({
         root: { label: 'English', lang: 'en' },
         zh: { label: '简体中文', lang: 'zh-CN' },
       },
-      social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/deskmind-ai' }],
+      social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/deskmind-ai/deskmind' }],
       editLink: { baseUrl: 'https://github.com/deskmind-ai/site/edit/main/' },
       customCss: ['./src/styles/docs.css'],
       head: [

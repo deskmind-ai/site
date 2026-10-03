@@ -22,7 +22,7 @@ TypeSafe 的决策模型 [Jev](https://typesafe.ai/blog/introducing-system-one-m
 DeskMind 是一个开源的 Computer Use Agent，每一步做决定的模型都跑在你自己的 Mac 上。
 
 [演示视频（56 秒）](https://deskmind.dev/zh/?ref=zhihu) · [下载 Mac 版](https://github.com/deskmind-ai/app/releases/latest) ·
-[GitHub](https://github.com/deskmind-ai)
+[GitHub](https://github.com/deskmind-ai/deskmind)
 
 这篇写的是我怎么把它做出来，以及路上踩的坑。如果你也在做 agent，最值得看的可能是这三条：想让模型学会问，得先让 harness 给它“问用户”这个选项；“完成”要靠检查结果，不能靠模型自己说；我把训练标签平滑到 0.95，0.8B 的把握就全挤到了门槛边上，七成步骤只好交给慢的 4B。
 

@@ -22,7 +22,7 @@ Here's the demo task. Find Lisa Wong's order in a text file and add it to a spre
 DeskMind is an open-source computer use agent for the Mac, and every decision is made by a model running on the laptop itself.
 
 [Demo (56 s)](https://deskmind.dev/?ref=blog) · [Mac app](https://github.com/deskmind-ai/app/releases/latest) ·
-[GitHub](https://github.com/deskmind-ai)
+[GitHub](https://github.com/deskmind-ai/deskmind)
 
 This post is how I built it and where it went wrong. If you build agents, three things might be worth your time. An agent only learns to ask if the harness gives it an "ask" option. "Done" has to be checked, not believed. And smoothing my labels to 0.95 squeezed the 0.8B's confidence right up against the routing threshold, which is why 70% of steps go to the slow model.
 

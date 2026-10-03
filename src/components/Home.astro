@@ -8,6 +8,7 @@ import { APP_DOWNLOAD, type HomeCopy } from '../i18n/home';
 interface Props { t: HomeCopy }
 const { t } = Astro.props;
 const GH = 'https://github.com/deskmind-ai';
+const HUB = `${GH}/deskmind`; // the one repo every "GitHub" link points at, so stars land in one place
 const frame = 'M12 30V12H52V34 M12 36V52H33';
 const lang = t.lang === 'en' ? 'en' : 'zh';
 const canonical = t.lang === 'en' ? 'https://deskmind.dev/' : 'https://deskmind.dev/zh/';
@@ -70,7 +71,7 @@ const ld = [
   <nav aria-label={t.navLabel} class="nav">
     <a href={t.docs}>{t.nav.docs}</a>
     <a href={t.post.href}>{t.post.footer}</a>
-    <a href={GH}>GitHub</a>
+    <a href={HUB}>GitHub</a>
     <a href={t.other.href} hreflang={t.lang === 'en' ? 'zh-CN' : 'en'}>{t.other.label}</a>
     <a href="#download" class="btn btn-dark btn-sm">{t.nav.download}</a>
   </nav>
@@ -246,7 +247,7 @@ const ld = [
     <a href={t.docs}>{t.footer.docs}</a>
     <a href={t.faq.href}>{t.footer.faq}</a>
     <a href={t.post.href}>{t.post.footer}</a>
-    <a href={GH}>GitHub</a>
+    <a href={HUB}>GitHub</a>
     <a href="https://huggingface.co/deskmind">Hugging Face</a>
     <a href={`${GH}/deskmind/discussions`}>{t.footer.discussions}</a>
     <a href={`${GH}/.github/blob/main/SECURITY.md`}>{t.footer.security}</a>

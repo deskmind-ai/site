@@ -35,7 +35,7 @@ const en = {
     cards: [
       {
         title: 'A small model, on your Mac',
-        body: 'A 0.8B model decides each step and a 4B checks the hard ones. Both run on your Mac: no cloud round-trip, no per-step bill.',
+        body: 'A 0.8B model decides each step and hands the unsure ones to a 4B. Both run on your Mac: no cloud round-trip, no per-step bill.',
         proof: 'Median decision 2.85 s · 0.5 s when the 0.8B is sure',
       },
       {
@@ -100,7 +100,7 @@ const en = {
     hard: [
       'Copying long tables (more than about four rows) or filtered rows',
       'Filling a form from a photographed receipt',
-      'Steps the 4B has to check take a few seconds',
+      'Steps handed to the 4B take a few seconds',
     ],
     howTitle: 'How we measure',
     how: 'Graders check the final state of files and apps. Every attempt counts, environment failures are listed, and the bench is open.',
@@ -170,7 +170,7 @@ const zh: HomeCopy = {
     cards: [
       {
         title: '小模型，就在你的 Mac 上',
-        body: '每一步先由 0.8B 判断，难的再交给 4B 复核。两个模型都在本机运行，不走云端，也不按次付费。',
+        body: '每一步先由 0.8B 判断，没把握的交给 4B 重新判断。两个模型都在本机运行，不走云端，也不按次付费。',
         proof: '决策中位数 2.85 秒 · 0.8B 有把握时 0.5 秒',
       },
       {
@@ -232,7 +232,7 @@ const zh: HomeCopy = {
       ['0.835', 'JevBench 公开题，4B 模型（231 题；密封题成绩待出）'],
     ],
     hardTitle: '还做不好的',
-    hard: ['抄写长表格（超过约四行）或按条件筛选的行', '根据收据图片填写报销表单', '需要 4B 复核的步骤要几秒钟'],
+    hard: ['抄写长表格（超过约四行）或按条件筛选的行', '根据收据图片填写报销表单', '交给 4B 的步骤要几秒钟'],
     howTitle: '我们怎么测',
     how: '评分程序检查文件和应用的最终状态。每次尝试都计入，环境故障单独列出，评测本身开源。',
     more: '全部成绩和方法 →',
