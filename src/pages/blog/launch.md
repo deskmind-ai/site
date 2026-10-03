@@ -23,7 +23,7 @@ DeskMind is an open-source computer use agent for the Mac, and every decision is
 
 ## Why I wanted it local
 
-I like computer use agents. I just didn't like three things about running them.
+I use computer use agents a lot these days. The more I used them, the more three things bothered me.
 
 My screen goes to someone else's server at every step. Mail, files, whatever happens to be open.
 
