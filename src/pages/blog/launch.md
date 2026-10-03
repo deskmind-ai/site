@@ -8,11 +8,11 @@ date: October 2026
 
 # 3 weeks, 20 training rounds, $600: a local computer use agent that asks first
 
-*I trained a small Jev-style model to drive my Mac, and taught it to ask first*
+*I trained a small Jev-style decision model to drive my Mac*
 
 The day after Jev launched, I started a new repo to find out one thing: can a model small enough to fit on a Mac make Jev-style decisions, one step at a time, and actually drive my computer?
 
-Three weeks in, counting the vision model I'd started a few days earlier, it's been twenty training rounds and about $600. The answer is: partly. And there's one thing it does better than most agents I've tried. When it isn't sure, it stops and asks.
+Three weeks in, counting the vision model I'd started a few days earlier, it's been about twenty training rounds and about $600. The answer is: partly. And there's one thing it does better than most agents I've tried. When it isn't sure, it stops and asks.
 
 Here's the demo task. Find Lisa Wong's order in a text file and add it to a spreadsheet. There are two Lisa Wong orders in the file. Most agents pick one, write it, and report success. DeskMind stopped and asked which one I meant.
 
@@ -51,7 +51,7 @@ Owning both sides is different. You can train the model for exactly what the har
 
 Take the Lisa Wong case. The harness notices that two rows match and adds "ask the user" to the options. The model is trained to pick it in that situation. Neither half could do that alone.
 
-Or finishing early, which is how most agents fail. The model says DONE, and the harness checks the actual file before believing it. The model is also trained on near-identical pairs, like saved vs. unsaved or the last line missing, so it rarely says DONE wrongly in the first place.
+Or finishing early, which is how most agents fail. The model says "done", and the harness checks the actual file before believing it. The model is also trained on near-identical pairs, like saved vs. unsaved or the last line missing, so it rarely says "done" too early in the first place.
 
 Or the time it kept playing the studio version of a song when I'd asked for the live one. I trained it on matched pairs where the screen was the same and only the "(Live)" detail differed. Fixed in one round.
 
@@ -61,9 +61,9 @@ That loop, where the model shapes the harness and the harness shapes the model, 
 
 Each step becomes a few typed questions: which operation, which element, which value. Brain reads the logits of the option letters in a single prefill and returns a probability for each option. It never writes free text.
 
-The probabilities do three jobs. The 0.8B answers first, and if it's below 0.96, or the step is risky, the 4B answers instead. If two options are both plausible, one of them can be "ask". And DONE only counts after the harness checks the final state.
+The probabilities do three jobs. The 0.8B answers first, and if it's below 0.96, or the step is risky, the 4B answers instead. If two options are both plausible, one of them can be "ask". And "done" only counts after the harness checks the final state.
 
-It's not magic. Multiple choice gets rid of format errors, not judgement errors. If the right option isn't in the list, the model will still pick something.
+It has limits. Multiple choice gets rid of format errors, not judgement errors. If the right option isn't in the list, the model will still pick something.
 
 ## Did it work?
 
@@ -99,7 +99,7 @@ The numbers, with their caveats:
 
 ## Built with Claude Code
 
-I couldn't have built this alone. Three weeks, five repos, a Mac app, a benchmark and about twenty training rounds: without Claude Code none of it gets finished. I had several sessions running in parallel, one on the models and training and one on the harness, the app and the evals. They coordinated through issues in a private repo, wrote most of the code, ran the training and the desktop tests, and caught a lot of my mistakes. My job was deciding what to build, what to measure, and when something was good enough to ship.
+Three weeks, five repos, a Mac app, a benchmark and about twenty training rounds. I couldn't have finished that without Claude Code. I had several sessions running in parallel, one on the models and training and one on the harness, the app and the evals. They coordinated through issues in a private repo, wrote most of the code, ran the training and the desktop tests, and caught a lot of my mistakes. My job was deciding what to build, what to measure, and when something was good enough to ship.
 
 ## Try it
 
