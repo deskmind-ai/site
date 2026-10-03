@@ -1,12 +1,14 @@
 ---
 layout: ../../../layouts/Post.astro
-title: "小到能在你的 Mac 上跑，聪明到知道该问你"
+title: "三周、二十轮训练、600 美元：我做了一个本地运行的 Computer Use Agent"
 description: "为什么我要把决策模型和 harness 放在一起训练，做一个本地运行的 Computer Use Agent，以及二十来轮训练教会我的事。"
 lang: zh-CN
 date: 2026 年 10 月
 ---
 
-# 小到能在你的 Mac 上跑，<br>聪明到知道该问你
+# 三周、二十轮训练、600 美元：<br>我做了一个本地运行的 Computer Use Agent
+
+*小到能在你的 Mac 上跑，聪明到知道该问你*
 
 演示任务我特意挑了个很无聊的：在一个文本文件里找到 Lisa Wong 的订单，把它加进表格。
 

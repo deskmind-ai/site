@@ -1,12 +1,14 @@
 ---
 layout: ../../layouts/Post.astro
-title: "Small enough to run on your Mac. Smart enough to ask."
+title: "3 weeks, 20 training rounds, $600: a local computer use agent that asks first"
 description: "Why I trained a small local decision model and its harness together for a Mac computer use agent, and what twenty rounds taught me."
 lang: en
 date: October 2026
 ---
 
-# Small enough to run on your Mac. Smart enough to ask.
+# 3 weeks, 20 training rounds, $600: a local computer use agent that asks first
+
+*Small enough to run on your Mac. Smart enough to ask.*
 
 The demo task is boring on purpose: find Lisa Wong's order in a text file and add it to a spreadsheet.
 
