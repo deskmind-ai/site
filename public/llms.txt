@@ -19,7 +19,7 @@
 
 ## Code and models
 - [GitHub organisation](https://github.com/deskmind-ai)
-- [Mac app releases](https://github.com/deskmind-ai/app/releases/latest)
+- [Mac app releases](https://github.com/deskmind-ai/deskmind/releases/latest)
 - [Models on Hugging Face](https://huggingface.co/deskmind) (mirrored on ModelScope: gxcsoccer/brain-0.8b, brain-4b, eyes-4b)
 
 ## 中文

@@ -34,7 +34,7 @@ a run, independently of what the agent said it did.
 | Brain | decides the next step, with a probability for every option | [deskmind-ai/brain](https://github.com/deskmind-ai/brain) |
 | Hands | observes and acts on the macOS desktop | [deskmind-ai/hands](https://github.com/deskmind-ai/hands) |
 | Bench | sandbox tasks and strict final-state graders | [deskmind-ai/bench](https://github.com/deskmind-ai/bench) |
-| App | brings the loop to your Mac as a native app | [deskmind-ai/app](https://github.com/deskmind-ai/app) |
+| App | brings the loop to your Mac as a native app | [deskmind/app](https://github.com/deskmind-ai/deskmind/tree/main/app) |
 
 Each component can be used on its own. For how they connect, see [Architecture](/docs/explanation/architecture/).
 

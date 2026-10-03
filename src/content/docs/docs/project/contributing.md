@@ -41,7 +41,7 @@ Start with issues labelled **good first issue**. Each one says which file to cha
 - **A bug isolated to one component:** that repository's tracker
   ([brain](https://github.com/deskmind-ai/brain/issues), [eyes](https://github.com/deskmind-ai/eyes/issues),
   [hands](https://github.com/deskmind-ai/hands/issues), [bench](https://github.com/deskmind-ai/bench/issues),
-  [app](https://github.com/deskmind-ai/app/issues)).
+  [app](https://github.com/deskmind-ai/deskmind/issues)).
 - **A change spanning repositories:** one coordinating issue in deskmind, linked to focused issues or pull requests in
   each component.
 - **Questions and design discussion:** [Discussions](https://github.com/deskmind-ai/deskmind/discussions).

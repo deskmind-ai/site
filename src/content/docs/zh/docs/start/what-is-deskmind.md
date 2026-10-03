@@ -27,7 +27,7 @@ DeskMind 得心让 agent 用开源小模型操作真实的 macOS 桌面。你给
 | Brain | 决定下一步，为每个选项给出概率 | [deskmind-ai/brain](https://github.com/deskmind-ai/brain) |
 | Hands | 观察并操作 macOS 桌面 | [deskmind-ai/hands](https://github.com/deskmind-ai/hands) |
 | Bench | 沙箱任务和严格的最终状态评分 | [deskmind-ai/bench](https://github.com/deskmind-ai/bench) |
-| App | 把整个循环做成一个 Mac App | [deskmind-ai/app](https://github.com/deskmind-ai/app) |
+| App | 把整个循环做成一个 Mac App | [deskmind/app](https://github.com/deskmind-ai/deskmind/tree/main/app) |
 
 每个组件都能单独使用。它们怎么连在一起，见[架构](/zh/docs/explanation/architecture/)。
 
