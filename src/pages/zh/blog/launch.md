@@ -16,6 +16,8 @@ Jev 发布的第二天，我开了个新仓库，想验证一件事：一个小�
 
 比如演示里的这个任务：从一个文本文件里找出 Lisa Wong 的订单，填进表格。可文件里 Lisa Wong 有两笔订单。大多数 agent 会随手挑一笔填进去，然后告诉你“完成了”。DeskMind 停了下来，问我要的是哪一笔。
 
+<figure class="fig"><video src="/video/case-ask-zh.mp4" poster="/video/case-ask-zh.jpg" autoplay muted loop playsinline></video><figcaption>两笔都匹配：DeskMind 先问用哪一笔，再写进表格。</figcaption></figure>
+
 DeskMind 是一个开源的 Computer Use Agent，每一步做决定的模型都跑在你自己的 Mac 上。
 
 [演示视频（56 秒）](https://deskmind.dev/zh/?ref=zhihu) · [下载 Mac 版](https://github.com/deskmind-ai/app/releases/latest) ·
@@ -61,6 +63,8 @@ DeskMind 是一个开源的 Computer Use Agent，每一步做决定的模型都�
 
 每一步会被拆成几道带类型的题：做什么操作、点哪个元素、填什么值。Brain 一次前向计算，读出各个选项字母的 logits，给每个选项一个概率。它从不自己写文字。
 
+<figure class="fig"><img src="/blog/decide-zh.png" alt="示意图：harness 出一道选择题，Brain 给每个选项一个概率，概率决定直接执行、交给 4B、问用户，或者检查后才算完成。" width="1440" loading="lazy"></figure>
+
 这些概率干三件事。0.8B 先答，把握低于 0.96、或者这一步风险大，就换 4B 来答。两个选项都说得通的时候，其中一个可以是“问用户”。模型说“完成”，要等 harness 检查过最终状态才算数。
 
 它也不是万能的。选择题只是消灭了格式错误，判断错误一样会有。正确答案不在选项里，它照样会选一个。
@@ -94,6 +98,8 @@ DeskMind 是一个开源的 Computer Use Agent，每一步做决定的模型都�
 **提示词的形状会泄露答案。** 我的“完成”样本比别的样本少几道题，模型就学会了：题少，就是完成。
 
 **固定的软标签会把把握压扁。** 我拿平滑到 0.95 的标签去训 0.8B，结果它的把握全挤在 0.94 到 0.97 之间，路由分不清哪步简单哪步难。上面那 70% 的升级率就是这么来的。下一轮改成直接学 4B 给出的真实概率。
+
+<figure class="fig"><img src="/blog/confidence-zh.png" alt="柱状图：G18b 0.8B 的 1,700 次决策中，68% 的把握落在 0.94 到 0.97，门槛 0.96 正好在中间，0.98 以上一次都没有。" width="1440" loading="lazy"></figure>
 
 **“先问”要专门训，还得守住。** 有一轮压根没学会问，自信满满地写错了行；后来又有一轮丢了一部分，直到我重新调了门槛。现在“先问”是关卡里单独的一项。
 

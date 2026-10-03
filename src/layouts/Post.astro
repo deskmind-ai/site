@@ -61,6 +61,9 @@ const canonical = new URL(Astro.url.pathname, 'https://deskmind.dev').href;
   .post th { font-weight: 500; color: var(--ink-3); font-size: 13px; }
   .post hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
   .date { color: var(--ink-3); font-size: 14px; margin: 0; }
+  .fig { margin: 28px 0; }
+  .fig img, .fig video { display: block; width: 100%; height: auto; border-radius: 12px; border: 1px solid var(--line); background: var(--paper-2); }
+  .fig figcaption { font-size: 13px; color: var(--ink-3); margin-top: 8px; }
   .foot { max-width: 720px; margin: 0 auto; padding: 0 20px 48px; color: var(--ink-3); font-size: 13px; }
   @media (max-width: 640px) { .post h1 { font-size: 30px; } .post { font-size: 16px; } }
 </style>
