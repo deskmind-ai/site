@@ -5,7 +5,6 @@ description: "Why I trained a small local decision model and its harness togethe
 lang: en
 date: October 5, 2026
 subtitle: "I trained a small Jev-style decision model to drive my Mac"
-hero: /blog/ask-en
 minutes: 8
 author: gxcsoccer
 ---
@@ -16,6 +15,8 @@ The day after TypeSafe launched [Jev](https://typesafe.ai/blog/introducing-syste
 Three weeks in, counting the vision model I'd started a few days earlier, that's about twenty training rounds and roughly $600. The answer so far is partly. And there's one thing it does better than most agents I've tried. When it isn't sure, it stops and asks.
 
 Here's the demo task. Find Lisa Wong's order in a text file and add it to a spreadsheet. There are two Lisa Wong orders in the file. Most agents pick one, write it, and report success. DeskMind stopped and asked which one I meant.
+
+<figure class="shot"><img src="/blog/ask-card.png" alt="DeskMind's question box: &quot;Lisa Wong&quot; is on more than one line, which one should I use? The answer field says 09-27." width="1440" loading="eager"><figcaption>From the demo: two rows match, so DeskMind asks which one before writing.</figcaption></figure>
 
 
 DeskMind is an open-source computer use agent for the Mac, and every decision is made by a model running on the laptop itself.

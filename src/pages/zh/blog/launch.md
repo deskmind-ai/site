@@ -5,7 +5,6 @@ description: "为什么我要把决策模型和 harness 放在一起训练，做
 lang: zh-CN
 date: 2026 年 10 月 5 日
 subtitle: "我训了一个 Jev 式的小决策模型，在 Mac 本地运行，让它来操作电脑"
-hero: /blog/ask-zh
 minutes: 7
 author: gxcsoccer
 ---
@@ -16,6 +15,8 @@ TypeSafe 的决策模型 [Jev](https://typesafe.ai/blog/introducing-system-one-m
 三周过去，算上早几天开始做的视觉模型，一共训了二十来轮，花了大约 600 美元。结论是能做到一部分。不过有一件事，它比我用过的大多数 agent 都做得好：拿不准的时候，它会先停下来问我。
 
 比如演示里的这个任务：从一个文本文件里找出 Lisa Wong 的订单，填进表格。可文件里 Lisa Wong 有两笔订单。大多数 agent 会随手挑一笔填进去，然后告诉你“完成了”。DeskMind 停了下来，问我要的是哪一笔。
+
+<figure class="shot"><img src="/blog/ask-card.png" alt="DeskMind 的提问框：“Lisa Wong” 出现在两行里，问用哪一笔，回答框里填着 09-27。" width="1440" loading="eager"><figcaption>演示里的真实画面：两行都匹配，DeskMind 先问用哪一笔，再写进表格。</figcaption></figure>
 
 
 DeskMind 是一个开源的 Computer Use Agent，每一步做决定的模型都跑在你自己的 Mac 上。

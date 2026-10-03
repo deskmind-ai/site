@@ -46,7 +46,6 @@ const other = zh ? { href: enPath, label: 'English' } : { href: zhPath, label: '
     {frontmatter.subtitle && <p class="sub">{frontmatter.subtitle}</p>}
     <p class="by"><a href={`https://github.com/${frontmatter.author}`}>{frontmatter.author}</a><span>·</span>{frontmatter.date}<span>·</span>{zh ? `约 ${frontmatter.minutes} 分钟` : `${frontmatter.minutes} min read`}</p>
   </header>
-  {frontmatter.hero && <figure class="hero"><video src={`${frontmatter.hero}.mp4`} poster={`${frontmatter.hero}.jpg`} autoplay muted loop playsinline></video></figure>}
   <slot />
 </main>
 <footer class="foot">{zh ? '代码 Apache-2.0，文字 CC BY 4.0。' : 'Code Apache-2.0, text CC BY 4.0.'} <a href={zh ? '/zh/' : '/'}>deskmind.dev</a></footer>
@@ -78,13 +77,13 @@ const other = zh ? { href: enPath, label: 'English' } : { href: zhPath, label: '
   .ph .sub { font-size: 20px; line-height: 1.5; color: var(--ink-2); margin: 0 0 14px; }
   .by { display: flex; gap: 8px; flex-wrap: wrap; font-size: 14px; color: var(--ink-3); margin: 0; }
   .by a { color: var(--ink); text-decoration: none; font-weight: 500; }
-  .hero { margin: 0 -120px 36px; }
-  .hero video { display: block; width: 100%; height: auto; border-radius: 16px; border: 1px solid var(--line); box-shadow: 0 1px 2px rgba(38,43,40,.06), 0 16px 40px rgba(38,43,40,.10); background: var(--paper-2); }
-  @media (max-width: 1000px) { .hero { margin: 0 0 32px; } }
   html[lang='zh-CN'] .post h1 { font-size: 34px; line-height: 1.35; letter-spacing: 0; }
   html[lang='zh-CN'] .post em { font-style: normal; color: var(--ink-3); }
   .nw { white-space: nowrap; }
   .fig { margin: 28px 0; }
+  .shot { margin: 28px 0 32px; }
+  .shot img { display: block; width: 100%; height: auto; filter: drop-shadow(0 1px 1px rgba(38,43,40,.06)) drop-shadow(0 10px 24px rgba(38,43,40,.10)); }
+  .shot figcaption { font-size: 13px; color: var(--ink-3); margin-top: 12px; }
   .fig img, .fig video { display: block; width: 100%; height: auto; border-radius: 12px; border: 1px solid var(--line); background: var(--paper-2); }
   .fig figcaption { font-size: 13px; color: var(--ink-3); margin-top: 8px; }
   .foot { max-width: 720px; margin: 0 auto; padding: 0 20px 48px; color: var(--ink-3); font-size: 13px; }
