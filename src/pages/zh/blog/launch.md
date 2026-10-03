@@ -3,7 +3,7 @@ layout: ../../../layouts/Post.astro
 title: "三周、二十轮训练、600 美元：我做了一个拿不准就先问的本地 Computer Use Agent"
 description: "为什么我要把决策模型和 harness 放在一起训练，做一个本地运行的 Computer Use Agent，以及二十来轮训练教会我的事。"
 lang: zh-CN
-date: 2026 年 10 月 5 日
+date: 2026 年 10 月 4 日
 subtitle: "我训了一个 Jev 式的小决策模型，在 Mac 本地运行，让它来操作电脑"
 minutes: 7
 author: gxcsoccer

@@ -3,7 +3,7 @@ layout: ../../layouts/Post.astro
 title: "3 weeks, 20 training rounds, $600: a local computer use agent that asks first"
 description: "Why I trained a small local decision model and its harness together for a Mac computer use agent, and what twenty rounds taught me."
 lang: en
-date: October 5, 2026
+date: October 4, 2026
 subtitle: "I trained a small Jev-style decision model to drive my Mac"
 minutes: 8
 author: gxcsoccer
