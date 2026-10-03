@@ -1,6 +1,6 @@
 ---
 title: 常见问题
-description: 关于 DeskMind Mac 版的常见问题：系统要求、下载大小、权限、隐私、安全、速度，以及和其他电脑操作工具的关系。
+description: 关于 DeskMind Mac 版的常见问题：系统要求、下载大小、权限、隐私、安全、速度，以及和其他 Computer Use Agent 的关系。
 sidebar:
   order: 4
 ---
