@@ -97,7 +97,7 @@ The numbers, with their caveats:
 
 **Asking has to be trained, and defended.** One round never learned to ask and confidently wrote the wrong row. A later one lost some of it until I re-tuned the threshold. It's now its own check in the gate.
 
-## Built with Claude Code
+## Thanks, Claude Code
 
 Three weeks, five repos, a Mac app, a benchmark and about twenty training rounds. I couldn't have finished that without Claude Code. I had several sessions running in parallel, one on the models and training and one on the harness, the app and the evals. They coordinated through issues in a private repo, wrote most of the code, ran the training and the desktop tests, and caught a lot of my mistakes. My job was deciding what to build, what to measure, and when something was good enough to ship.
 
