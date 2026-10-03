@@ -12,7 +12,7 @@ date: October 2026
 
 The day after Jev launched, I started a new repo to find out one thing: can a model small enough to fit on a Mac make Jev-style decisions, one step at a time, and actually drive my computer?
 
-Three weeks in, counting the vision model I'd started a few days earlier, it's been about twenty training rounds and about $600. The answer is: partly. And there's one thing it does better than most agents I've tried. When it isn't sure, it stops and asks.
+Three weeks in, counting the vision model I'd started a few days earlier, that's about twenty training rounds and roughly $600. The answer so far is partly. And there's one thing it does better than most agents I've tried. When it isn't sure, it stops and asks.
 
 Here's the demo task. Find Lisa Wong's order in a text file and add it to a spreadsheet. There are two Lisa Wong orders in the file. Most agents pick one, write it, and report success. DeskMind stopped and asked which one I meant.
 
