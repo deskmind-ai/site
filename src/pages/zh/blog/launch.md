@@ -10,11 +10,13 @@ date: 2026 年 10 月
 
 *我在本地训了一个 Jev 式的决策模型，让它来操作我的 Mac*
 
-演示任务我特意挑了个很无聊的：在一个文本文件里找到 Lisa Wong 的订单，把它加进表格。
+三周前我想弄明白一件事：一个小到能装进 Mac 的模型，能不能像 Jev 那样一步一步做决定，并且真的替我操作电脑。
 
-文件里有两笔 Lisa Wong 的订单。我试过的大多数 agent 会随手挑一笔写进去，然后告诉你“完成了”。我做的这个停了下来，问我要哪一笔。
+二十来轮训练、大约 600 美元之后，答案是：能做到一部分。有一件事它做得比我试过的大多数 agent 都好：没把握的时候，它会停下来问我。
 
-DeskMind 想做的就是这一下停顿。它是一个开源的 Computer Use Agent，替你在 Mac 上操作电脑；每一步做决定的模型很小，就跑在你自己的电脑上。
+比如这个演示任务：在一个文本文件里找到 Lisa Wong 的订单，加进表格。文件里有两笔 Lisa Wong 的订单。大多数 agent 会随手挑一笔写进去，然后说“完成了”。DeskMind 停了下来，问我要哪一笔。
+
+DeskMind 是一个开源的 Computer Use Agent，每一步做决定的模型都跑在你自己的 Mac 上。
 
 [演示视频（56 秒）](https://deskmind.dev/zh/?ref=zhihu) · [下载 Mac 版](https://github.com/deskmind-ai/app/releases/latest) ·
 [GitHub](https://github.com/deskmind-ai)

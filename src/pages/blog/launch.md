@@ -10,11 +10,13 @@ date: October 2026
 
 *I trained a small Jev-style model to drive my Mac, and taught it to ask first*
 
-The demo task is boring on purpose: find Lisa Wong's order in a text file and add it to a spreadsheet.
+Three weeks ago I wanted to know one thing: can a model small enough to fit on a Mac make Jev-style decisions, one step at a time, and actually drive my computer?
 
-There are two Lisa Wong orders in the file. Most agents I tried would pick one, write it, and report success. Mine stopped and asked which one I meant.
+Twenty training rounds and about $600 later, the answer is: partly. And there's one thing it does better than most agents I've tried. When it isn't sure, it stops and asks.
 
-That pause is the whole point of DeskMind. It's an open-source computer use agent for the Mac, and the model making each decision is small enough to run on the laptop itself.
+Here's the demo task. Find Lisa Wong's order in a text file and add it to a spreadsheet. There are two Lisa Wong orders in the file. Most agents pick one, write it, and report success. DeskMind stopped and asked which one I meant.
+
+DeskMind is an open-source computer use agent for the Mac, and every decision is made by a model running on the laptop itself.
 
 [Demo (56 s)](https://deskmind.dev/?ref=blog) · [Mac app](https://github.com/deskmind-ai/app/releases/latest) ·
 [GitHub](https://github.com/deskmind-ai)
