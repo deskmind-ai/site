@@ -140,8 +140,8 @@ export type HomeCopy = typeof en;
 
 const zh: HomeCopy = {
   lang: 'zh-CN',
-  title: 'DeskMind：在你的 Mac 上替你操作电脑的开源 AI',
-  description: 'DeskMind 是全栈开源的电脑操作 AI（computer use）：本地小模型在你的 Mac 上看屏幕、决定每一步、给出每个选项的概率，任务有歧义时先问你。Mac App、模型和代码免费。',
+  title: 'DeskMind：在你的 Mac 上本地运行的开源 Computer Use Agent',
+  description: 'DeskMind 是全栈开源的 Computer Use Agent（让 AI 替你操作电脑）：本地小模型在你的 Mac 上看屏幕、决定每一步、给出每个选项的概率，任务有歧义时先问你。Mac App、模型和代码免费。',
   docs: '/zh/docs/',
   quickstart: '/zh/docs/start/quickstart/',
   other: { href: '/', label: 'English' },
@@ -164,7 +164,7 @@ const zh: HomeCopy = {
     caption: '真实录屏，发布版模型。两笔订单都叫 Lisa Wong，所以它先问。',
   },
   diff: {
-    title: '和别的电脑操作 AI 有什么不同',
+    title: '和其他 Computer Use Agent 有什么不同',
     cards: [
       {
         title: '小模型，就在你的 Mac 上',

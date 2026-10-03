@@ -40,7 +40,7 @@ DeskMind 得心让 agent 用开源小模型操作真实的 macOS 桌面。你给
 
 ## 适合谁
 
-- **开发者和研究者：** 在做电脑操作 agent，想要一个本地运行、带类型的单步决策 HTTP 接口。从[快速上手](/zh/docs/start/quickstart/)开始。
+- **开发者和研究者：** 在做 Computer Use Agent，想要一个本地运行、带类型的单步决策 HTTP 接口。从[快速上手](/zh/docs/start/quickstart/)开始。
 - **想在自己的 Mac 上试试本地 agent 的人：** 见[安装 Mac App](/zh/docs/start/install-the-app/)。
 - **想如实评测 agent 的人：** Bench 从磁盘读取运行记录，用严格的评分程序重新打分。
 
