@@ -4,11 +4,12 @@ title: "三周、二十轮训练、600 美元：我做了一个拿不准就先�
 description: "为什么我要把决策模型和 harness 放在一起训练，做一个本地运行的 Computer Use Agent，以及二十来轮训练教会我的事。"
 lang: zh-CN
 date: 2026 年 10 月 5 日
+subtitle: "我训了一个 Jev 式的小决策模型，在 Mac 本地运行，让它来操作电脑"
+hero: /blog/ask-zh
+minutes: 7
+author: gxcsoccer
 ---
 
-# 三周、二十轮训练、600 美元：<br>我做了一个拿不准就先问的本地 <span class="nw">Computer Use Agent</span>
-
-*我训了一个 Jev 式的小决策模型，在 Mac 本地运行，让它来操作电脑*
 
 TypeSafe 的决策模型 [Jev](https://typesafe.ai/blog/introducing-system-one-models-and-jev) 发布的第二天，我开了个新仓库，想验证一件事：一个小到能在 Mac 上跑的模型，能不能也像 Jev 那样一步一步做决定，然后真的去操作我的电脑。
 
@@ -16,7 +17,6 @@ TypeSafe 的决策模型 [Jev](https://typesafe.ai/blog/introducing-system-one-m
 
 比如演示里的这个任务：从一个文本文件里找出 Lisa Wong 的订单，填进表格。可文件里 Lisa Wong 有两笔订单。大多数 agent 会随手挑一笔填进去，然后告诉你“完成了”。DeskMind 停了下来，问我要的是哪一笔。
 
-<figure class="fig"><video src="/blog/ask-zh.mp4" poster="/blog/ask-zh.jpg" autoplay muted loop playsinline></video></figure>
 
 DeskMind 是一个开源的 Computer Use Agent，每一步做决定的模型都跑在你自己的 Mac 上。
 

@@ -41,7 +41,12 @@ const other = zh ? { href: enPath, label: 'English' } : { href: zhPath, label: '
   </nav>
 </header>
 <main class="post">
-  <p class="date">{frontmatter.date}</p>
+  <header class="ph">
+    <h1 set:html={zh ? frontmatter.title.replace('：', '：<br>').replace('Computer Use Agent', '<span class="nw">Computer Use Agent</span>') : frontmatter.title.replace(': ', ':<br>').replace('that asks first', '<span class="nw">that asks first</span>')} />
+    {frontmatter.subtitle && <p class="sub">{frontmatter.subtitle}</p>}
+    <p class="by"><a href={`https://github.com/${frontmatter.author}`}>{frontmatter.author}</a><span>·</span>{frontmatter.date}<span>·</span>{zh ? `约 ${frontmatter.minutes} 分钟` : `${frontmatter.minutes} min read`}</p>
+  </header>
+  {frontmatter.hero && <figure class="hero"><video src={`${frontmatter.hero}.mp4`} poster={`${frontmatter.hero}.jpg`} autoplay muted loop playsinline></video></figure>}
   <slot />
 </main>
 <footer class="foot">{zh ? '代码 Apache-2.0，文字 CC BY 4.0。' : 'Code Apache-2.0, text CC BY 4.0.'} <a href={zh ? '/zh/' : '/'}>deskmind.dev</a></footer>
@@ -68,7 +73,14 @@ const other = zh ? { href: enPath, label: 'English' } : { href: zhPath, label: '
   .post th, .post td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
   .post th { font-weight: 500; color: var(--ink-3); font-size: 13px; }
   .post hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
-  .date { color: var(--ink-3); font-size: 14px; margin: 0; }
+  .ph { margin: 8px 0 28px; }
+  .ph h1 { margin: 0 0 14px; }
+  .ph .sub { font-size: 20px; line-height: 1.5; color: var(--ink-2); margin: 0 0 14px; }
+  .by { display: flex; gap: 8px; flex-wrap: wrap; font-size: 14px; color: var(--ink-3); margin: 0; }
+  .by a { color: var(--ink); text-decoration: none; font-weight: 500; }
+  .hero { margin: 0 -120px 36px; }
+  .hero video { display: block; width: 100%; height: auto; border-radius: 16px; border: 1px solid var(--line); box-shadow: 0 1px 2px rgba(38,43,40,.06), 0 16px 40px rgba(38,43,40,.10); background: var(--paper-2); }
+  @media (max-width: 1000px) { .hero { margin: 0 0 32px; } }
   html[lang='zh-CN'] .post h1 { font-size: 34px; line-height: 1.35; letter-spacing: 0; }
   html[lang='zh-CN'] .post em { font-style: normal; color: var(--ink-3); }
   .nw { white-space: nowrap; }

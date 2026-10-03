@@ -4,11 +4,12 @@ title: "3 weeks, 20 training rounds, $600: a local computer use agent that asks 
 description: "Why I trained a small local decision model and its harness together for a Mac computer use agent, and what twenty rounds taught me."
 lang: en
 date: October 5, 2026
+subtitle: "I trained a small Jev-style decision model to drive my Mac"
+hero: /blog/ask-en
+minutes: 8
+author: gxcsoccer
 ---
 
-# 3 weeks, 20 training rounds, $600: a local computer use agent that asks first
-
-*I trained a small Jev-style decision model to drive my Mac*
 
 The day after TypeSafe launched [Jev](https://typesafe.ai/blog/introducing-system-one-models-and-jev), its decision model, I started a new repo to find out one thing: can a model small enough to fit on a Mac make Jev-style decisions, one step at a time, and actually drive my computer?
 
@@ -16,7 +17,6 @@ Three weeks in, counting the vision model I'd started a few days earlier, that's
 
 Here's the demo task. Find Lisa Wong's order in a text file and add it to a spreadsheet. There are two Lisa Wong orders in the file. Most agents pick one, write it, and report success. DeskMind stopped and asked which one I meant.
 
-<figure class="fig"><video src="/blog/ask-en.mp4" poster="/blog/ask-en.jpg" autoplay muted loop playsinline></video></figure>
 
 DeskMind is an open-source computer use agent for the Mac, and every decision is made by a model running on the laptop itself.
 
