@@ -16,7 +16,7 @@ Three weeks in, counting the vision model I'd started a few days earlier, that's
 
 Here's the demo task. Find Lisa Wong's order in a text file and add it to a spreadsheet. There are two Lisa Wong orders in the file. Most agents pick one, write it, and report success. DeskMind stopped and asked which one I meant.
 
-<figure class="fig"><video src="/video/case-ask-en.mp4" poster="/video/case-ask-en.jpg" autoplay muted loop playsinline></video><figcaption>Two rows match, so DeskMind asks which one before writing.</figcaption></figure>
+<figure class="fig"><video src="/blog/ask-en.mp4" poster="/blog/ask-en.jpg" autoplay muted loop playsinline></video></figure>
 
 DeskMind is an open-source computer use agent for the Mac, and every decision is made by a model running on the laptop itself.
 

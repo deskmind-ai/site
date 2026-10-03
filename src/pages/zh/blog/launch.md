@@ -16,7 +16,7 @@ Jev 发布的第二天，我开了个新仓库，想验证一件事：一个小�
 
 比如演示里的这个任务：从一个文本文件里找出 Lisa Wong 的订单，填进表格。可文件里 Lisa Wong 有两笔订单。大多数 agent 会随手挑一笔填进去，然后告诉你“完成了”。DeskMind 停了下来，问我要的是哪一笔。
 
-<figure class="fig"><video src="/video/case-ask-zh.mp4" poster="/video/case-ask-zh.jpg" autoplay muted loop playsinline></video><figcaption>两笔都匹配：DeskMind 先问用哪一笔，再写进表格。</figcaption></figure>
+<figure class="fig"><video src="/blog/ask-zh.mp4" poster="/blog/ask-zh.jpg" autoplay muted loop playsinline></video></figure>
 
 DeskMind 是一个开源的 Computer Use Agent，每一步做决定的模型都跑在你自己的 Mac 上。
 
