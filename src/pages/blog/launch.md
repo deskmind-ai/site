@@ -35,7 +35,7 @@ So I wanted to know how far a small local model could get if the code around it,
 
 ## Eyes first, then a brain
 
-I started with seeing, because plenty of apps have no accessibility tree and you have to find the button in pixels. That became Eyes, a 4B grounding model. It was also my first time post-training anything. I did SFT and then RL, on Tinker first, then Aliyun PAI, then GPUs rented by the hour.
+I started with seeing, because plenty of apps have no accessibility tree and you have to find the button in pixels. That became Eyes, a 4B grounding model. It was also my first time post-training anything. I did SFT and then RL, and the platform followed the money. Tinker was the easiest and the most expensive. Aliyun PAI was cheaper. In the end I just rented GPUs by the hour, which was the best deal.
 
 Then Jev came out and decision models were suddenly everywhere. The idea clicked for me immediately. Don't ask a chat model to write out its next action. Ask it a multiple-choice question and read a probability for every option. It's fast, there's nothing to parse, and it knows when it isn't sure.
 
