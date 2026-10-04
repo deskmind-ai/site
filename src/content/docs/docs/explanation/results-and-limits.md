@@ -2,7 +2,7 @@
 title: Results and limits
 description: What release G18b scored on the real desktop and on public benchmark items, how long a decision takes, and what is still hard.
 sidebar:
-  order: 3
+  order: 4
 ---
 
 All numbers on this page are our own runs, from release **G18b** (October 2026). The source of record is

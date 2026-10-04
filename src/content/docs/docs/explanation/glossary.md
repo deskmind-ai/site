@@ -2,7 +2,7 @@
 title: Glossary
 description: The terms used across DeskMind's docs, results and release notes.
 sidebar:
-  order: 4
+  order: 5
 ---
 
 | Term | Meaning |
