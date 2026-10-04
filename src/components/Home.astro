@@ -3,7 +3,7 @@
 import '@fontsource/manrope/400.css';
 import '@fontsource/manrope/500.css';
 import '@fontsource/jetbrains-mono/400.css';
-import { APP_DOWNLOAD, type HomeCopy } from '../i18n/home';
+import { APP_DOWNLOAD, APP_RELEASES, type HomeCopy } from '../i18n/home';
 
 interface Props { t: HomeCopy }
 const { t } = Astro.props;
@@ -73,7 +73,7 @@ const ld = [
     <a href={t.post.href}>{t.post.footer}</a>
     <a href={HUB}>GitHub</a>
     <a href={t.other.href} hreflang={t.lang === 'en' ? 'zh-CN' : 'en'}>{t.other.label}</a>
-    <a href="#download" class="btn btn-dark btn-sm">{t.nav.download}</a>
+    <a href={APP_DOWNLOAD} class="btn btn-dark btn-sm">{t.nav.download}</a>
   </nav>
 </header>
 
@@ -84,7 +84,7 @@ const ld = [
     <h1>{t.hero.title[0]}{t.lang !== 'en' && <br>}{t.hero.title[1]}<span class="accent">{t.lang === 'en' ? '.' : '。'}</span></h1>
     <p class="lead">{t.hero.lead}</p>
     <div class="row">
-      <a href="#download" class="btn btn-dark">{t.nav.download}</a>
+      <a href={APP_DOWNLOAD} class="btn btn-dark">{t.nav.download}</a>
       <a href={t.hero.githubHref} class="btn btn-line">{t.hero.github}</a>
     </div>
     <div class="meta">{t.hero.meta}</div>
@@ -232,7 +232,7 @@ const ld = [
       <a href={APP_DOWNLOAD} class="btn btn-dark">{t.cta.download}</a>
       <a href={t.quickstart} class="btn btn-line">{t.cta.quickstart}</a>
     </div>
-    <div class="meta">{t.cta.meta}</div>
+    <div class="meta">{t.cta.meta} · <a href={APP_RELEASES} class="under-dark">{t.lang === 'en' ? 'Release notes' : '版本说明'}</a></div>
   </div>
 </section>
 </main>
@@ -417,6 +417,7 @@ const ld = [
   .notes { border-top: 1px solid rgba(244,241,234,0.2); padding-top: 32px; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 32px; }
   .notes ul { margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 6px; }
   .under { border-bottom: 1px solid rgba(244,241,234,0.5); }
+  .under-dark { border-bottom: 1px solid var(--accent); }
 
 
   .faqsec { gap: 28px; }

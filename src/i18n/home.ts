@@ -1,7 +1,9 @@
 // Homepage copy. The two languages share one layout (src/components/Home.astro); keep the keys in step.
 // Numbers come from brain/results (G18b release, bench v25); update both languages together.
 
-export const APP_DOWNLOAD = 'https://github.com/deskmind-ai/deskmind/releases/latest';
+// The DMG itself (CI uploads every release's DMG also as DeskMind.dmg), so one click starts the download.
+export const APP_DOWNLOAD = 'https://github.com/deskmind-ai/deskmind/releases/latest/download/DeskMind.dmg';
+export const APP_RELEASES = 'https://github.com/deskmind-ai/deskmind/releases/latest';
 
 const en = {
   lang: 'en',
