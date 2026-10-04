@@ -31,6 +31,8 @@ New here? Read [What is DeskMind](/docs/start/what-is-deskmind/), then
 - [Architecture](/docs/explanation/architecture/): the components, how they talk, what runs where.
 - [System One: choices, not guesses](/docs/explanation/system-one/): typed questions, probabilities, routing,
   asking and checking "done".
+- [The live view](/docs/explanation/live-view/): the card that shows the task's window, live, and how it keeps out
+  of your way.
 - [Results and limits](/docs/explanation/results-and-limits/): what we measured, on what, and where it still fails.
 
 ## Project

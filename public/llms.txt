@@ -14,6 +14,7 @@
 - [POST /v1/systemone API](https://deskmind.dev/docs/reference/systemone-api/)
 - [Architecture](https://deskmind.dev/docs/explanation/architecture/)
 - [System One: choices, not guesses](https://deskmind.dev/docs/explanation/system-one/)
+- [The live view](https://deskmind.dev/docs/explanation/live-view/)
 - [Results and limits](https://deskmind.dev/docs/explanation/results-and-limits/)
 - [Troubleshooting](https://deskmind.dev/docs/how-to/troubleshooting/)
 

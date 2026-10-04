@@ -26,6 +26,7 @@ DeskMind 得心是一组开源小模型和工具，用来操作 Mac：**Eyes** �
 
 - [架构](/zh/docs/explanation/architecture/)：有哪些组件、怎么通信、什么在哪里运行。
 - [System One：选择，不是猜](/zh/docs/explanation/system-one/)：带类型的问题、概率、路由、提问和完成前的检查。
+- [实时画面卡](/zh/docs/explanation/live-view/)：实时显示任务窗口的小卡片，以及它怎样不挡你。
 - [成绩与局限](/zh/docs/explanation/results-and-limits/)：测了什么、在什么条件下测、还在哪里出错。
 
 ## 项目

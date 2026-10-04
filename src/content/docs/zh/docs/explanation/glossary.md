@@ -2,7 +2,7 @@
 title: 术语表
 description: DeskMind 文档、成绩和发布说明里用到的术语。
 sidebar:
-  order: 4
+  order: 5
 ---
 
 | 术语 | 含义 |

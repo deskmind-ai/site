@@ -2,7 +2,7 @@
 title: 成绩与局限
 description: 发布版 G18b 在真实桌面和公开题上的成绩，一次决策要多久，以及还有哪些难点。
 sidebar:
-  order: 3
+  order: 4
 ---
 
 本页的数字都是我们自己跑的，来自发布版 **G18b**（2026 年 10 月）。以 [brain/docs/results.zh-CN.md](https://github.com/deskmind-ai/brain/blob/main/docs/results.zh-CN.md) 为准；逐个任务的表格见 [bench/results/reference.md](https://github.com/deskmind-ai/bench/blob/main/results/reference.md)。
