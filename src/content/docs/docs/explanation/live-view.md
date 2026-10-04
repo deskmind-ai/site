@@ -6,8 +6,9 @@ sidebar:
 ---
 
 While a task runs in the background, a small card in a corner of the screen shows the window DeskMind is working in,
-live, with the step it is taking in words. It is new in the Mac app 0.4.0 and on by default. To turn it off, choose
-**View › Show a Live View of the Task**.
+live, with the step it is taking in words. It is new in the Mac app 0.4.0 and on by default. To turn it off, uncheck
+**View › Show a Live View of the Task**. The setting applies from the next task; to pause the picture of the task
+running now, collapse the card.
 
 <video src="/video/case-live-en.mp4" poster="/video/case-live-en.jpg" controls muted playsinline preload="none" style="width:100%;border-radius:12px"></video>
 
@@ -17,8 +18,8 @@ at the top of the screen says what the task is doing. The card shows what it loo
 ## What the card shows
 
 - **The title bar:** 小方, then the app's name, then the step number or the status.
-- **The picture:** the task's window, whole, even when other windows cover it. An orange dot marks where the last
-  step acted, with a ripple on a click. DeskMind never moves your own pointer.
+- **The picture:** the task's window, whole, even when other apps' windows cover it. An orange dot marks where the
+  last step acted, with a ripple on a click. DeskMind never moves your own pointer.
 - **The line under the picture:** the step being taken, in words, such as *Type "hello"*.
 
 小方's eyes tell you the state at a glance. The orange dot at its foot is the status light.
@@ -37,7 +38,7 @@ The buttons appear when the pointer is on the card.
 | Do this | What happens |
 |---|---|
 | Drag the card | It snaps to the nearest corner and stays there for later tasks. |
-| Double-click, or press **Larger** | The picture grows from 360 × 240 to 720 × 480 points. Do it again to shrink it. |
+| Double-click, or press **Larger** | The picture grows to fit within 720 × 480 points instead of 360 × 240, keeping the window's shape. Do it again to shrink it. |
 | Press **Collapse** | The card becomes a 260 × 36 capsule with the status and the step. The capture pauses while it is collapsed. |
 | Press **Stop the task** (■) | The task stops. |
 | Click the card when it needs you | DeskMind's window opens so you can answer. |
@@ -49,8 +50,8 @@ The buttons appear when the pointer is on the card.
   does not: across the same edge first, then up or down the same side, then the opposite corner.
 - **Over an app that fills the screen, it lets clicks through.** Most people keep their apps maximized, so no corner
   is clear. The card then stays in the corner farthest from where the task has been acting, and clicks pass through it
-  to the app. Rest the pointer on the card for half a second and its buttons work. A task's click is instant, so it
-  always passes through.
+  to the app. Rest the pointer on the card for half a second and its buttons work. A task's click lands without
+  pausing on the card, so it always passes through.
 - **It says how the task ended, then goes.** It shows **Done**, **Didn't finish** or **Stopped** on its last picture
   for 2.5 seconds, then fades. If you start a new task sooner, the old card goes at once.
 
@@ -58,7 +59,8 @@ The buttons appear when the pointer is on the card.
 
 | Situation | What the card does |
 |---|---|
-| The window is behind other windows | It still shows the window whole. The capture leaves every other window out. |
+| The window is behind other apps' windows | It still shows the window whole. The capture leaves other apps' windows out. |
+| Another window of the same app lies on top of the task's window | In 0.4.0 that window shows in the picture too, as it does on your screen at that moment. |
 | The window moves, resizes or goes to another display | The card follows it. It checks about every 0.5 seconds. |
 | The window is minimized, closed or on another Space | It keeps the last picture, dimmed, with *Window not visible*. The picture comes back when the window does. |
 | The app has other windows | The card never switches to one of them. Once DeskMind has looked at the screen, the card shows only the window the task works in. |
@@ -73,8 +75,9 @@ the Screen Recording permission DeskMind already has.
 
 ## Privacy
 
-- **Only the task's window.** The card follows the window the task observes. It never falls back to another window
-  of the same app, or to anything else on your screen.
+- **The task's window.** The card follows the window the task observes. It never switches to another window of the
+  same app, or to anything else on your screen. Other apps' windows are left out of the picture. In 0.4.0, a window of
+  the same app lying on top of the task's window does show, as it does on your screen.
 - **The picture stays in the helper.** DeskMind Hands, the background helper that holds Screen Recording, captures the
   picture and draws the card. The picture is not sent to the DeskMind app, not saved to disk and never leaves your Mac.
 
@@ -83,22 +86,25 @@ the Screen Recording permission DeskMind already has.
 The card takes one picture about every 0.2 seconds, using ScreenCaptureKit's one-shot screenshots. It does not run a
 continuous capture stream, because a running stream slows the models down.
 
-We measured it on a fixed MLX load on an M4 Pro (macOS 27.2):
+We measured it on a fixed MLX load, on one M4 Pro (macOS 27.2):
 
 | Capture running beside the model | Time per round |
 |---|---|
 | none | 102 ms |
 | a capture stream, at 2 or 10 frames a second | 121–125 ms |
-| one-shot screenshots, even 10 a second | 102 ms |
+| one-shot screenshots, even 10 a second | 101–107 ms |
 
-With a stream, every step of a task would wait about 20% longer for its decision. With one-shot screenshots,
-decisions on real tasks were about 4% slower with the card on than with it off. The same cost is why recording a
-run slows it down, as noted in [Results and limits](/docs/explanation/results-and-limits/#decision-time).
+In this test a running stream made each round about 20% slower, and in real runs the stream-based card made
+decisions about 20% longer. With one-shot screenshots, one comparison on a real task gave an average of 5.35 s per
+decision with the card off and 5.56 s with it on (steps 4–9), about 4% slower. These are small samples on one Mac;
+the measurements are in the [pull request that added the card](https://github.com/deskmind-ai/deskmind/pull/3). The
+same cost is why recording a run slows it down, as noted in
+[Results and limits](/docs/explanation/results-and-limits/#decision-time).
 
 Two more choices:
 
-- **The picture is taken from the display, with every other window left out, then cropped to the task's window.**
-  That is why a covered window still shows whole. Naming the window in the capture filter instead would put macOS's
+- **The picture is taken from the display, with other apps' windows left out, then cropped to the task's window.**
+  That is why a window covered by other apps still shows whole. Naming the window in the capture filter instead would put macOS's
   purple "being shared" mark on it, on macOS 26 and later.
 - **It asks for twice the card's size in pixels, never more than the window has.** The picture stays sharp on a
   Retina display without copying a 5K window five times a second.
