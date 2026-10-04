@@ -53,7 +53,15 @@ with `?ref=internal` for your own tests; those visits are left out of the report
 
 ## Deploy
 
-Cloudflare Workers with static assets (`wrangler.jsonc`), since the deskmind.dev DNS is on Cloudflare:
+Cloudflare Workers with static assets (`wrangler.jsonc`), since the deskmind.dev DNS is on Cloudflare.
+
+**Merging to `main` deploys the site.** `.github/workflows/deploy.yml` builds every pull request as a check, and
+deploys every push to `main` a couple of minutes later. Run the workflow by hand from the Actions tab to redeploy
+`main`. It needs the repository secrets `CLOUDFLARE_API_TOKEN` (a token from the "Edit Cloudflare Workers" template)
+and `CLOUDFLARE_ACCOUNT_ID`. So merge a pull request only when its content may go live: a docs page for a release
+waits until that release is published.
+
+By hand, from your own checkout:
 
 ```bash
 npm run build
