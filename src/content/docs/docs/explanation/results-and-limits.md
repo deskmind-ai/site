@@ -54,6 +54,8 @@ Where the time goes on an M4 Pro:
   1,900 prompt tokens, so time scales with prompt length, not with the size of the weights.
 - Quantization does not help speed: 8-bit runs at the same speed with 119 of 120 answers identical; 4-bit is not
   faster and changes 30% of answers.
+- Recording a run in the app likely slows each decision by about a fifth: on a fixed MLX load, any continuous screen
+  capture stream cost about 20%. The bench numbers above were measured without recording.
 
 ## Public benchmark items
 
