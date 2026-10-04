@@ -1,0 +1,56 @@
+# Builds the site on every pull request (a check, nothing deployed), and deploys it to Cloudflare Workers (deskmind.dev)
+# on every push to main -- a merged pull request goes live a couple of minutes later. Run it by hand from the Actions
+# tab to redeploy main.
+#
+# Needs two repository secrets (Settings > Secrets and variables > Actions):
+#   CLOUDFLARE_API_TOKEN   a token made from the "Edit Cloudflare Workers" template, for the account and the
+#                          deskmind.dev zone
+#   CLOUDFLARE_ACCOUNT_ID  the account that owns the deskmind-site Worker
+name: Site
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+# One deploy at a time, in order: a newer push waits for the one before it, never cancels it half-way.
+concurrency:
+  group: ${{ github.event_name == 'pull_request' && format('check-{0}', github.ref) || 'deploy' }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  site:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+
+      - name: Check the deploy secrets
+        if: github.event_name != 'pull_request'
+        env:
+          TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          ACCOUNT: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          if [ -z "$TOKEN" ] || [ -z "$ACCOUNT" ]; then
+            echo "::error::Set the CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID repository secrets to deploy."
+            exit 1
+          fi
+
+      - name: Deploy to Cloudflare Workers
+        if: github.event_name != 'pull_request'
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          wranglerVersion: "4.145.0"
+          command: deploy
