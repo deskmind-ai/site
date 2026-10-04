@@ -56,6 +56,13 @@ music app, copying a small web table into a CSV and saving it. It is still weak 
 than about four rows), filling a form from a photographed receipt, and some steps that need the 4B take a few
 seconds. See [Results and limits](/docs/explanation/results-and-limits/).
 
+## What should I try first?
+
+Start with the sample folder the app offers, then a specific goal in your own folder: "move the invoices into the
+Invoices folder" works better than "organise this folder". Vague goals aren't handled well yet. With nothing obvious to
+sort into, it may stop early or choose odd names. Large folders are slow too, because the screen state gets long and
+every step goes to the 4B, so expect tens of seconds per step there.
+
 ## How fast is it?
 
 Across all steps on our real-desktop bench, a decision takes 2.85 s at the median and 9.8 s for the slowest 5%. When
