@@ -75,7 +75,7 @@ operates for you, such as Safari, use the network as they normally would.
 
 ## Check that it works
 
-There is no separate self-test. Instead, the home screen's **Try examples** opens a set of sample tasks:
+On the home screen, **Self-test** opens a set of sample tasks:
 
 - **6 smoke tests** on a mock desktop: virtual windows in memory. They check that the app, the helper and the local
   runtime are wired up, and touch nothing real.
