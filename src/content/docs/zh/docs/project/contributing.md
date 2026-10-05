@@ -29,9 +29,8 @@ sidebar:
 
 ## 在哪里报告
 
-- **项目方向、跨组件的环境问题、归属不明的问题、复现报告：** 提交到 [deskmind 的 issues](https://github.com/deskmind-ai/deskmind/issues)。
-- **已定位到单个组件的 bug：** 提交到对应仓库（[brain](https://github.com/deskmind-ai/brain/issues)、[eyes](https://github.com/deskmind-ai/eyes/issues)、[hands](https://github.com/deskmind-ai/hands/issues)、[bench](https://github.com/deskmind-ai/bench/issues)、[app](https://github.com/deskmind-ai/deskmind/issues)）。
-- **跨仓库的改动：** 在 deskmind 开一个协调 issue，再链接到各组件里具体的 issue 或 PR。
+- **所有 issue，不论哪个组件：** 都提到 [deskmind 的 issues](https://github.com/deskmind-ai/deskmind/issues)，我们用 `area: brain`、`area: hands`、`area: eyes`、`area: bench`、`area: app` 标签区分组件；各组件仓库不再接收 issue。
+- **PR：** 提到代码所在的仓库，用 `deskmind-ai/deskmind#编号` 关联 issue。
 - **提问与设计讨论：** 去 [Discussions](https://github.com/deskmind-ai/deskmind/discussions)。
 - **安全问题：** 不要公开提交，见[安全](/zh/docs/project/security/)。
 

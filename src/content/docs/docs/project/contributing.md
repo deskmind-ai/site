@@ -36,14 +36,10 @@ Start with issues labelled **good first issue**. Each one says which file to cha
 
 ## Where to report
 
-- **Project direction, cross-component setup, unclear ownership, reproduction reports:**
-  [deskmind issues](https://github.com/deskmind-ai/deskmind/issues).
-- **A bug isolated to one component:** that repository's tracker
-  ([brain](https://github.com/deskmind-ai/brain/issues), [eyes](https://github.com/deskmind-ai/eyes/issues),
-  [hands](https://github.com/deskmind-ai/hands/issues), [bench](https://github.com/deskmind-ai/bench/issues),
-  [app](https://github.com/deskmind-ai/deskmind/issues)).
-- **A change spanning repositories:** one coordinating issue in deskmind, linked to focused issues or pull requests in
-  each component.
+- **Every issue, for any component:** [deskmind issues](https://github.com/deskmind-ai/deskmind/issues). We label
+  them by component (`area: brain`, `area: hands`, `area: eyes`, `area: bench`, `area: app`); the component
+  repositories don't take issues.
+- **Pull requests:** to the repository that holds the code, referencing the issue as `deskmind-ai/deskmind#123`.
 - **Questions and design discussion:** [Discussions](https://github.com/deskmind-ai/deskmind/discussions).
 - **Security problems:** not in public. See [Security](/docs/project/security/).
 
