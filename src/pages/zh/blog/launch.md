@@ -127,4 +127,4 @@ curl -s localhost:8796/v1/systemone -H 'Content-Type: application/json' -d @exam
 
 [文档](https://deskmind.dev/zh/docs/?ref=zhihu)里有一个 30 行的客户端示例。ModelScope 上的模型和 Hugging Face 上 deskmind 组织里的是同一份文件。
 
-接下来要做的：更快的 0.8B、更多应用、一个专门处理“本地不该自己拿主意”的云端层。如果你也围着一个改不了的模型写过 agent，很想听听：两边都握在自己手里，会不会改变你的做法。最简单的参与方式：给它一个有歧义的任务，看它会问还是会猜。猜错了，就把例子发到 [issue](https://github.com/deskmind-ai/deskmind/issues) 里；想聊思路，来[讨论区](https://github.com/deskmind-ai/deskmind/discussions)。
+接下来要做的：更快的 0.8B、更多应用、一个专门处理“本地不该自己拿主意”的云端层。如果你也围着一个改不了的模型写过 agent，很想听听：两边都握在自己手里，会不会改变你的做法。最简单的参与方式：给它一个有歧义的任务，看它会问还是会猜。猜错了，就把例子发到[这条 issue](https://github.com/deskmind-ai/deskmind/issues/10) 里；想聊思路，来[讨论区](https://github.com/deskmind-ai/deskmind/discussions)。
