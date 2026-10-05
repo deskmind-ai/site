@@ -110,3 +110,14 @@ Loading normally takes about 30 seconds after a restart.
 | The local model didn't answer in time | Check that **Local model** is ready on the home screen, then run again. |
 | The last task is still running | Wait for it to finish, or click **Stop** first. |
 | Paused while you use your Mac | Not an error: the app needs the foreground for this step and waits until you leave the mouse and keyboard alone. |
+
+### Reporting a failed run
+
+Under the message, two buttons help:
+
+- **Report on GitHub** opens the "Problem using the app" form with what you asked, how it ended, the steps by kind
+  and a folded diagnostics section (numbers and kinds only, no screen content or paths) filled in. Check it, then
+  submit it yourself. Nothing is sent from the app.
+- **Save Full Log…** saves a .zip on your Mac with the run's trace, a screenshot of every step, the model servers'
+  logs and the error. It shows what the report can't, and it also holds what was on your screen, file names and
+  your account name, so look through it before you attach any of it.
