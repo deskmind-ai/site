@@ -99,8 +99,8 @@ We measured it on a fixed MLX load, on one M4 Pro (macOS 27.2):
 In this test a running stream made each round about 20% slower, and in real runs the stream-based card made
 decisions about 20% longer. With one-shot screenshots, one comparison on a real task gave an average of 5.35 s per
 decision with the card off and 5.56 s with it on (steps 4–9), about 4% slower. These are small samples on one Mac;
-the measurements are in the [pull request that added the card](https://github.com/deskmind-ai/deskmind/pull/3). The
-same cost is why recording a run slows it down, as noted in
+the measurements are in the [pull request that added the card](https://github.com/deskmind-ai/deskmind/pull/3). For the
+same reason, recording a run takes one-shot screenshots too since 0.5; see
 [Results and limits](/docs/explanation/results-and-limits/#decision-time).
 
 Two more choices:
