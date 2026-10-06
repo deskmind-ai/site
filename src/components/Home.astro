@@ -3,7 +3,7 @@
 import '@fontsource/manrope/400.css';
 import '@fontsource/manrope/500.css';
 import '@fontsource/jetbrains-mono/400.css';
-import { APP_DOWNLOAD, APP_RELEASES, type HomeCopy } from '../i18n/home';
+import { APP_DOWNLOAD, type HomeCopy } from '../i18n/home';
 
 interface Props { t: HomeCopy }
 const { t } = Astro.props;
@@ -233,7 +233,7 @@ const ld = [
       <a href={APP_DOWNLOAD} class="btn btn-dark">{t.cta.download}</a>
       <a href={HUB} class="btn btn-line btn-star"><Fragment set:html={STAR} />{t.hero.github}</a>
     </div>
-    <div class="meta">{t.cta.meta} · <a href={t.quickstart} class="under-dark">{t.cta.quickstart}</a> · <a href={APP_RELEASES} class="under-dark">{t.lang === 'en' ? 'Release notes' : '版本说明'}</a></div>
+    <div class="meta">{t.cta.meta} · <a href={t.quickstart} class="under-dark">{t.cta.quickstart}</a> · <a href={t.footer.changelogHref} class="under-dark">{t.footer.changelog}</a></div>
   </div>
 </section>
 </main>
@@ -248,6 +248,7 @@ const ld = [
     <a href={t.docs}>{t.footer.docs}</a>
     <a href={t.faq.href}>{t.footer.faq}</a>
     <a href={t.post.href}>{t.post.footer}</a>
+    <a href={t.footer.changelogHref}>{t.footer.changelog}</a>
     <a href={HUB}>GitHub</a>
     <a href="https://huggingface.co/deskmind">Hugging Face</a>
     <a href={`${GH}/deskmind/discussions`}>{t.footer.discussions}</a>
