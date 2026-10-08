@@ -3,9 +3,34 @@
 // sessionStorage only links events within one visit. Browsers that send Do Not Track send nothing (see public/t.js).
 const str = (v, n) => (typeof v === 'string' ? v : v == null ? '' : String(v)).slice(0, n);
 
+// One canonical origin. www. and plain http serve the same pages, which Search Console lists as duplicates
+// ("备用网页（有适当的规范标记）"), and the assets layer answers /zh with a temporary 307 to /zh/ ("网页会自动重定向").
+// Both become permanent redirects to https://deskmind.dev/…/, so Google indexes one URL per page.
+const CANONICAL_HOST = 'deskmind.dev';
+
+function canonicalRedirect(url) {
+  let target = null;
+  if (url.hostname !== CANONICAL_HOST || url.protocol !== 'https:') {
+    target = new URL(url);
+    target.protocol = 'https:';
+    target.hostname = CANONICAL_HOST;
+  }
+  // Pages end in a slash (Astro's build and the sitemap agree); a path without one and without an extension is a page.
+  const last = url.pathname.slice(url.pathname.lastIndexOf('/') + 1);
+  if (url.pathname !== '/e' && !url.pathname.endsWith('/') && last && !last.includes('.')) {
+    target = target || new URL(url);
+    target.pathname = url.pathname + '/';
+  }
+  return target && target.href !== url.href ? Response.redirect(target.href, 301) : null;
+}
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
+    if (request.method === 'GET' || request.method === 'HEAD') {
+      const redirect = canonicalRedirect(url);
+      if (redirect) return redirect;
+    }
     if (url.pathname === '/e') {
       if (request.method !== 'POST') return new Response(null, { status: 405 });
       try {
