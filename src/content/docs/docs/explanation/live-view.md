@@ -60,7 +60,7 @@ The buttons appear when the pointer is on the card.
 | Situation | What the card does |
 |---|---|
 | The window is behind other apps' windows | It still shows the window whole. The capture leaves other apps' windows out. |
-| Another window of the same app lies on top of the task's window | In 0.4.0 that window shows in the picture too, as it does on your screen at that moment. |
+| Another window of the same app lies on top of the task's window | The picture leaves it out and shows the task's window whole. The app's menus, popovers, floating panels and sheets still show, since they belong to what the task is doing. (In 0.4.0 that window showed in the picture too.) |
 | The window moves, resizes or goes to another display | The card follows it. It checks about every 0.5 seconds. |
 | The window spans two displays | The card shows the part on one of them. |
 | The window is minimized, closed or on another Space | It keeps the last picture, dimmed, with *Window not visible*. The picture comes back when the window does. |
@@ -78,8 +78,8 @@ the Screen Recording permission DeskMind already has.
 
 - **The task's window.** Once DeskMind has named the window it works in, the card shows that window and never
   switches to another window of the same app, or to anything else on your screen. Until then, and for an app read
-  from its pixels, it shows the app's largest window. Other apps' windows are left out of the picture. In 0.4.0, a
-  window of the same app lying on top of the task's window does show, as it does on your screen.
+  from its pixels, it shows the app's largest window. Other apps' windows are left out of the picture, and so are
+  the same app's other windows; its menus, popovers, floating panels and sheets show.
 - **The picture stays in the helper.** DeskMind Hands, the background helper that holds Screen Recording, captures the
   picture and draws the card. The picture is not sent to the DeskMind app, not saved to disk and never leaves your Mac.
 
@@ -99,8 +99,8 @@ We measured it on a fixed MLX load, on one M4 Pro (macOS 27.2):
 In this test a running stream made each round about 20% slower, and in real runs the stream-based card made
 decisions about 20% longer. With one-shot screenshots, one comparison on a real task gave an average of 5.35 s per
 decision with the card off and 5.56 s with it on (steps 4–9), about 4% slower. These are small samples on one Mac;
-the measurements are in the [pull request that added the card](https://github.com/deskmind-ai/deskmind/pull/3). The
-same cost is why recording a run slows it down, as noted in
+the measurements are in the [pull request that added the card](https://github.com/deskmind-ai/deskmind/pull/3). For the
+same reason, recording a run takes one-shot screenshots too since 0.5; see
 [Results and limits](/docs/explanation/results-and-limits/#decision-time).
 
 Two more choices:
